@@ -243,16 +243,17 @@
     <!-- END layout-wrapper -->
 
     <!-- JAVASCRIPT -->
+    <script src="<?= base_url() ?>assets/themes/velzon/js/jquery-3.6.0.min.js"></script>
     <script src="<?= base_url() ?>assets/themes/landing/js/common.min.js"></script>
     <script src="<?= base_url() ?>assets/themes/landing/js/index.min.js"></script>
 
     <?php
     echo '
-        <script src="' . base_url('application/modules/back-modules/template/js/js-module-configuration.js') . '"></script>
+        <script src="' . base_url('application/modules/front-modules/template/js/js-module-configuration.js') . '"></script>
     ';
     foreach ($module_js as $item_js) {
         echo '
-                <script src="' . base_url('application/modules/back-modules/' . $module_directory . '/js/' . $item_js . '.js') . '"></script>
+                <script src="' . base_url('application/modules/front-modules/' . $module_directory . '/js/' . $item_js . '.js') . '"></script>
             ';
     }
     ?>
