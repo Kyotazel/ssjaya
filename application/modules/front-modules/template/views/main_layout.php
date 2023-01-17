@@ -17,6 +17,7 @@
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/logo/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/index.min.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/custom.css" />
     <script>
         //configuration
         var _controller = '<?= $this->router->fetch_class(); ?>';
@@ -26,7 +27,7 @@
 </head>
 
 <body>
-    <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
+    <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true" style="height: 100px;">
         <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
             <a class="brand header_logo d-flex align-items-center" href="index.html">
                 <span class="logo">
@@ -86,19 +87,8 @@
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content" style="min-height: 720px;">
-
-        <div class="page-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <?php $this->load->view("$module_directory/$view_file"); ?>
-                    </div>
-                </div>
-            </div>
-            <!-- container-fluid -->
-        </div>
-        <!-- End Page-content -->
+    <div class="main-content" style="min-height: 720px; margin-top: 100px">
+        <?php $this->load->view("$module_directory/$view_file"); ?>
     </div>
 
     <footer class="footer">
