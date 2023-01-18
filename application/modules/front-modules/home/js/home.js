@@ -29,3 +29,28 @@ function SlideShow(n) {
   slides[slidePosition-1].style.display = "block";
   circles[slidePosition-1].className += " enable";
 } 
+
+// Testimoni
+var slidePositionTesti = 1;
+SlideShowTesti(slidePositionTesti);
+
+// forward/Back controls
+function plusSlidesTesti(n) {
+  SlideShowTesti(slidePositionTesti += n);
+}
+
+//  images controls
+function currentSlide(n) {
+  SlideShowTesti(slidePositionTesti = n);
+}
+
+function SlideShowTesti(n) {
+  let i;
+  let slides = document.getElementsByClassName("Containers-testi");
+  if (n > slides.length) {slidePositionTesti = 1}
+  if (n < 1) {slidePositionTesti = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slidePositionTesti-1].style.display = "block";
+} 

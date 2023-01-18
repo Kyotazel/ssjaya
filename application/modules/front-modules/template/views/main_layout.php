@@ -17,13 +17,18 @@
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/logo/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/index.min.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/news2.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/custom.css" />
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/themes/admin/assets/libs/bootstrap/dist/css/bootstrap-grid.css" /> -->
+    <!-- C:\xampp_new\htdocs\ssjaya\assets\themes\admin\assets\libs\bootstrap\dist\css -->
     <script>
         //configuration
         var _controller = '<?= $this->router->fetch_class(); ?>';
         var _base_url = '<?= substr(base_url(), 0, strlen(base_url()) - 1); ?>';
         var _token_user = '<?= urlencode($this->encryption->encrypt($this->session->userdata('us_token_login'))) ?>'
     </script>
+    <style>
+    </style>
 </head>
 
 <body>
@@ -61,6 +66,11 @@
                     <li class="header_nav-list_item">
                         <a class="nav-link d-inline-flex align-items-center" href="<?= base_url("consultation") ?>">
                             Konsultasi
+                        </a>
+                    </li>
+                    <li class="header_nav-list_item">
+                        <a class="nav-link d-inline-flex align-items-center" href="<?= base_url("article") ?>">
+                            Artikel
                         </a>
                     </li>
                     <li class="header_nav-list_item">
