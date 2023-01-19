@@ -42,7 +42,7 @@
 </section>
 
 <section class="myproducts" style="margin-bottom: 40px;">
-    <div class="featured section--nopb">
+    <div class="featured" style="padding-top: 60px;">
         <div class="container">
             <div class="featured_header">
                 <h2 class="featured_header-title">Produk Kami</h2>

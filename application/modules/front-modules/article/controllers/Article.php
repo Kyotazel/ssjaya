@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends BackendController
+class Article extends BackendController
 {
 
-    protected $module_name = 'home';
-    protected $module_directory = 'home';
-    protected $module_js = ['home'];
+    protected $module_name = 'article';
+    protected $module_directory = 'article';
+    protected $module_js = ['article'];
     protected $app_data = [];
 
     public function __construct()
@@ -24,15 +24,8 @@ class Home extends BackendController
 
     public function index()
     {
-        $this->app_data['page_title']   = 'Beranda';
+        $this->app_data['page_title']   = 'Tentang Kami';
         $this->app_data['view_file']    = 'main_view';
-        echo Modules::run('template/main_layout', $this->app_data);
-    }
-
-    public function not_found()
-    {
-        $this->app_data['page_title']   = 'Halaman Tidak Ditemukan';
-        $this->app_data['view_file']    = 'not_found';
         echo Modules::run('template/main_layout', $this->app_data);
     }
 }

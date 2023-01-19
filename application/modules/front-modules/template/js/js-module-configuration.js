@@ -1,11 +1,6 @@
 var getUrl = window.location;
 var baseUrl = _base_url;
-var prefix_folder = "admin";
-
-var path_current = getUrl.origin + getUrl.pathname;
-$("a[data-url='" + path_current + "']").addClass("active");
-// main-parent-menu
-$("a[data-url='" + path_current + "']").closest(".main-parent-menu").addClass("collapsed");
+var prefix_folder = "";
 
 function notif_success(message) {
     Toastify({

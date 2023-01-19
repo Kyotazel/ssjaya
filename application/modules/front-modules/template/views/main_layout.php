@@ -18,9 +18,8 @@
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/index.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/news2.min.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/themes/admin/dist/css/icons/font-awesome/css/fontawesome-all.css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/custom.css" />
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/themes/admin/assets/libs/bootstrap/dist/css/bootstrap-grid.css" /> -->
-    <!-- C:\xampp_new\htdocs\ssjaya\assets\themes\admin\assets\libs\bootstrap\dist\css -->
     <script>
         //configuration
         var _controller = '<?= $this->router->fetch_class(); ?>';
@@ -74,7 +73,7 @@
                         </a>
                     </li>
                     <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="<?= base_url("mitra-seller") ?>">
+                        <a class="nav-link d-inline-flex align-items-center" href="https://seller.ssjaya.com">
                             Mitra Seller
                         </a>
                     </li>
@@ -97,12 +96,12 @@
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content" style="min-height: 720px; margin-top: 100px">
+    <div class="main-content" style="min-height: 600px; margin-top: 100px">
         <?php $this->load->view("$module_directory/$view_file"); ?>
     </div>
 
     <footer class="footer">
-        <div class="footer_main section">
+        <div class="footer_main section" style="padding-bottom: 40px; padding-top: 40px;">
             <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
                 <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
                     <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
@@ -220,7 +219,7 @@
                 </div>
                 <div class="footer_main-instagram footer_main-block col-md-6 col-xl-auto">
                     <h4 class="footer_main-instagram_header footer_main-header">Sertifikasi</h4>
-                    <ul class="footer_main-instagram_list d-grid">
+                    <ul class="footer_main-instagram_list d-grid" style="grid-template-rows: repeat(3,0fr);">
                         <li class="list-item">
                             <picture>
                                 <img class="lazy" data-src="<?= base_url() ?>assets/images/logo/bpom.png" src="<?= base_url() ?>assets/images/logo/bpom.png" alt="Logo BPOM" style="background-color: white; padding:4px;" />
