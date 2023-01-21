@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['about-us'] = 'about_us';
+$route['consultation'] = 'home/consultation';
 $route['list-mitra'] = 'list_mitra';
 $route['404_override'] = 'home/not_found';
 $route['translate_uri_dashes'] = FALSE;

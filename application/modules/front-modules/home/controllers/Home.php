@@ -29,6 +29,13 @@ class Home extends BackendController
         echo Modules::run('template/main_layout', $this->app_data);
     }
 
+    public function consultation()
+    {
+        $this->app_data['page_title']   = 'Konsultasi';
+        $this->app_data['view_file']    = 'consultation';
+        echo Modules::run('template/main_layout', $this->app_data);
+    }
+
     public function not_found()
     {
         $this->app_data['page_title']   = 'Halaman Tidak Ditemukan';

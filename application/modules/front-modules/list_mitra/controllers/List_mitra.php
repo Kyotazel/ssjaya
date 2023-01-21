@@ -23,7 +23,7 @@ class List_mitra extends BackendController
 
     public function index()
     {
-        $this->app_data['page_title']   = 'Tentang Kami';
+        $this->app_data['page_title']   = 'List Mitra';
         $this->app_data['view_file']    = 'main_view';
         echo Modules::run('template/main_layout', $this->app_data);
     }
