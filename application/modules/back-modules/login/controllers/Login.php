@@ -27,7 +27,7 @@ class Login extends BackendController
 
         if ($token != '') {
             //create url
-            $url = Modules::run('helper/create_url', '/');
+            $url = base_url('admin');
             redirect($url);
         }
 
@@ -174,6 +174,6 @@ class Login extends BackendController
         //update data log 
         // Modules::run('database/update', 'log_admin', ['id' => $id_log], $array_update_log);
         $this->session->unset_userdata($session_data);
-        redirect(Modules::run('helper/create_url', 'login'));
+        redirect(base_url('admin/login'));
     }
 }

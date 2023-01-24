@@ -38,7 +38,7 @@ class Template extends BackendController
                 if ($value->is_group == 0) {
                     $html .= "
                 <li class='nav-item'>
-                    <a href='". Modules::run('helper/create_url', $value->link) ."' class='nav-link menu-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "'>
+                    <a href='". base_url('admin'.$value->link) ."' class='nav-link menu-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "'>
                         <i class='nav-icon fas $value->icon'></i>
                         <span>$value->name</span>";
                     $html .= "
@@ -57,7 +57,7 @@ class Template extends BackendController
                     {
                             $html .= "
                         <li class='nav-item'>
-                            <a href='". Modules::run('helper/create_url', $child->link) ."' class='nav-link' data-url='" . $child->link . "'>
+                            <a href='". base_url('admin'.$child->link) ."' class='nav-link' data-url='" . $child->link . "'>
                               $child->name
                             </a>
                         </li>

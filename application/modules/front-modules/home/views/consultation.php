@@ -18,7 +18,7 @@
             <div class="cta">
                 <div class="row" style="padding: 60px 12px 60px 12px;">
                     <div class="col-md-12" style="text-align: center;">
-                        <p style="color: white;">CV. SS JAYA GRUP menyediakan layanan konsultasi untuk masalah penyakit anda. Untuk melakukan konsultasi</p>
+                        <p style="color: white;">CV. SS JAYA GRUP menyediakan layanan konsultasi untuk masalah penyakit anda. Untuk melakukan konsultasi, klik nomor berikut : </p>
                             <a href="https://wa.me/6282371719393" class="btn" style="margin-top: 40px;"><i class="fab fa-whatsapp" style="margin-right: 12px;"></i>082371719393</a>
                             <!-- <a href="https://instagram.com/ssjayaherbal" class="btn" style="margin-top: 20px;"><i class="fab fa-instagram" style="margin-right: 12px;"></i>@ssjayaherbal </a> -->
                     </div>

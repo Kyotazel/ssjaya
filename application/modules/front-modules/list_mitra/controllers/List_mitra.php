@@ -23,6 +23,12 @@ class List_mitra extends BackendController
 
     public function index()
     {
+        $array_city = [
+            'select' => 'DISTINCT(kota)',
+            'from' => 'sales_apotek',
+            'order_by' => 'kota'
+        ];
+        $this->app_data['list_city'] = Modules::run('database/get', $array_city)->result();
         $this->app_data['page_title']   = 'List Mitra';
         $this->app_data['view_file']    = 'main_view';
         echo Modules::run('template/main_layout', $this->app_data);

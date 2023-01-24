@@ -31,6 +31,7 @@ class Home extends BackendController
 
     public function consultation()
     {
+        $this->app_data['module_js'] = [];
         $this->app_data['page_title']   = 'Konsultasi';
         $this->app_data['view_file']    = 'consultation';
         echo Modules::run('template/main_layout', $this->app_data);
@@ -38,6 +39,7 @@ class Home extends BackendController
 
     public function not_found()
     {
+        $this->app_data['module_js'] = [];
         $this->app_data['page_title']   = 'Halaman Tidak Ditemukan';
         $this->app_data['view_file']    = 'not_found';
         echo Modules::run('template/main_layout', $this->app_data);

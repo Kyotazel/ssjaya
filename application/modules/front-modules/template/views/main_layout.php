@@ -16,6 +16,8 @@
     <link rel="stylesheet preload" as="style" href="<?= base_url() ?>assets/themes/landing/css/libs.min.css" />
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/logo/favicon.png" type="image/x-icon">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/index.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/news2.min.css" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/admin/dist/css/icons/font-awesome/css/fontawesome-all.css" />
@@ -27,6 +29,22 @@
         var _token_user = '<?= urlencode($this->encryption->encrypt($this->session->userdata('us_token_login'))) ?>'
     </script>
     <style>
+        .header_button {
+            background-color: #efc368;
+            display: block;
+            width: 200px;
+            padding: 8px;
+            border-radius: 20px;
+            color: #214842;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .header_button:hover {
+            color: #efc368;
+            background-color: #214842;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -40,7 +58,7 @@
                 <span class="accent">SS</span>
                 <span>JAYA</span>
             </a>
-            <nav class="header_nav">
+            <nav class="header_nav" style="width: 70%;">
                 <ul class="header_nav-list">
                     <li class="header_nav-list_item">
                         <a class="nav-link d-inline-flex align-items-center" href="<?= base_url() ?>">
@@ -67,16 +85,6 @@
                             Konsultasi
                         </a>
                     </li>
-                    <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="<?= base_url("article") ?>">
-                            Artikel
-                        </a>
-                    </li>
-                    <li class="header_nav-list_item">
-                        <a class="nav-link d-inline-flex align-items-center" href="https://seller.ssjaya.com">
-                            Mitra Seller
-                        </a>
-                    </li>
                 </ul>
             </nav>
             <span class="header_trigger d-inline-flex d-xl-none flex-column justify-content-between">
@@ -85,11 +93,9 @@
                 <span class="line line--short"></span>
                 <span class="line line"></span>
             </span>
-            <!-- <div class="header_user d-flex justify-content-end align-items-center">
-                <a class="header_user-action d-inline-flex align-items-center justify-content-center" href="#">
-                    <i class="icon-basket"></i>
-                </a>
-            </div> -->
+            <div class="header_user d-flex justify-content-end align-items-center">
+                <a href="https://seller.ssjaya.com" class="header_button">Jadi Mitra Kami <i class="fas fa-hand-holding-heart"></i></a>
+            </div>
         </div>
     </header>
 
@@ -112,13 +118,13 @@
                         <span>JAYA</span>
                     </a>
                     <div class="footer_main-about_wrapper">
-                        <b>Warehouse</b>
-                        <p class="text">
-                            Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
-                        </p>
                         <b>Kantor Marketing</b>
                         <p class="text">
                             Perum Mutiara Jayabaya Blok C 17, Kec. Mojoroto, Kota Kediri, Jawa Timur.
+                        </p>
+                        <b>Warehouse</b>
+                        <p class="text">
+                            Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
                         </p>
                         <ul class="socials d-flex align-items-center accent">
                             <li class="list-item">
@@ -231,6 +237,41 @@
                             </picture>
                         </li>
                     </ul>
+                    <h4 class="footer_main-instagram_header footer_main-header">Toko Online & Jasa Pengiriman</h4>
+                    <ul class="socials d-flex align-items-center accent">
+                        <li class="list-item">
+                            <a class="link" href="#" target="_blank" rel="noopener norefferer">
+                                <img style="height: 40px; width: auto; margin-left: 8px; margin-right: 8px" src="<?= base_url() ?>assets/images/logo/shopee.png" alt="Shopee">
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link" href="" target="_blank" rel="noopener norefferer">
+                                <img style="height: 40px; width: auto; margin-left: 8px; margin-right: 8px" src="<?= base_url() ?>assets/images/logo/tokopedia.png" alt="Tokopedia">
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
+                                <img style="height: 40px; width: auto; margin-left: 8px; margin-right: 8px" src="<?= base_url() ?>assets/images/logo/lazada.png" alt="Lazada">
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="socials d-flex align-items-center accent mt-3">
+                        <li class="list-item">
+                            <a class="link" href="#" target="_blank" rel="noopener norefferer">
+                                <img style="height: 30px; width: auto; margin-left: 8px; margin-right: 8px; background-color: white; padding: 4px" src="<?= base_url() ?>assets/images/logo/jne.png" alt="jne">
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link" href="" target="_blank" rel="noopener norefferer">
+                                <img style="height: 30px; width: auto; margin-left: 8px; margin-right: 8px; background-color: white; padding: 4px" src="<?= base_url() ?>assets/images/logo/jnt.png" alt="jnt">
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
+                                <img style="height: 30px; width: auto; margin-left: 8px; margin-right: 8px; background-color: white; padding: 4px" src="<?= base_url() ?>assets/images/logo/ninja.png" alt="ninja">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -245,6 +286,8 @@
     <script src="<?= base_url() ?>assets/themes/velzon/js/jquery-3.6.0.min.js"></script>
     <script src="<?= base_url() ?>assets/themes/landing/js/common.min.js"></script>
     <script src="<?= base_url() ?>assets/themes/landing/js/index.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
     <?php
     echo '

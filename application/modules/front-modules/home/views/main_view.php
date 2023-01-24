@@ -6,8 +6,51 @@
         overflow: hidden;
     }
 
-    .news_list-item_wrapper .main, .news_list-item_wrapper .main_title {
+    .news_list-item_wrapper .main,
+    .news_list-item_wrapper .main_title {
         flex-grow: 0;
+    }
+
+    .btn_view_more {
+        color: #214842;
+        font-weight: bold;
+        border-radius: 12px;
+    }
+
+    .media {
+        position: relative;
+    }
+
+    .category_article {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        background-color: blue;
+        color: white;
+        padding: 8px;
+        font-weight: bolder;
+        border-radius: 999em 40px 40px 999em;
+    }
+
+    .thumbnails {
+        display: flex;
+        margin: 1rem auto 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .thumbnail {
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        list-style: none;
+        margin: 0 0.2rem;
+        cursor: pointer;
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: auto;
     }
 </style>
 
@@ -47,63 +90,150 @@
             <div class="featured_header">
                 <h2 class="featured_header-title">Produk Kami</h2>
             </div>
-            <div class="products_list d-grid">
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
+            <div class="my_list_product" style="max-width: 90%; margin: auto">
+                <section id="main-carousel" class="splide my-4" aria-label="My Awesome Gallery">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide" data-splide-interval="3000">
+                                <div class="product_title" style="text-align: center;">
+                                    <h3 style="color: black;">Gokoles</h3>
+                                    <div class="row mt-4">
+                                        <div class="col-md-5">
+                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
+                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide" data-splide-interval="3000">
+                                <div class="product_title" style="text-align: center;">
+                                    <h3 style="color: black;">Gokoles</h3>
+                                    <div class="row mt-4">
+                                        <div class="col-md-5">
+                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
+                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide" data-splide-interval="3000">
+                                <div class="product_title" style="text-align: center;">
+                                    <h3 style="color: black;">Gokoles</h3>
+                                    <div class="row mt-4">
+                                        <div class="col-md-5">
+                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
+                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide" data-splide-interval="3000">
+                                <div class="product_title" style="text-align: center;">
+                                    <h3 style="color: black;">Gokoles</h3>
+                                    <div class="row mt-4">
+                                        <div class="col-md-5">
+                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
+                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </section>
+
+                <ul id="thumbnails" class="thumbnails">
+                    <li class="thumbnail">
+                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
+                    </li>
+                    <li class="thumbnail">
+                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
+                    </li>
+                    <li class="thumbnail">
+                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
+                    </li>
+                    <li class="thumbnail">
+                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
+                    </li>
+                </ul>
             </div>
+            <!-- <div class="products_list d-grid">
+                <div class="products_list-item">
+                    <div class="products_list-item_wrapper d-flex flex-column">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
+                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
+                            <div class="main_price">
+                                <span class="price">Rp. 220.000</span>
+                            </div>
+                            <a class="btn btn--green" href="#" style="font-size: 16px;">
+                                <span>Lihat Selengkapnya</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="products_list-item">
+                    <div class="products_list-item_wrapper d-flex flex-column">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
+                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
+                            <div class="main_price">
+                                <span class="price">Rp. 220.000</span>
+                            </div>
+                            <a class="btn btn--green" href="#" style="font-size: 16px;">
+                                <span>Lihat Selengkapnya</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="products_list-item">
+                    <div class="products_list-item_wrapper d-flex flex-column">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
+                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
+                            <div class="main_price">
+                                <span class="price">Rp. 220.000</span>
+                            </div>
+                            <a class="btn btn--green" href="#" style="font-size: 16px;">
+                                <span>Lihat Selengkapnya</span>
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
         </div>
+    </div>
     </div>
 </section>
 
@@ -121,11 +251,11 @@
                 <div class="Containers-testi">
                     <div class="row">
                         <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
+                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/4.jpg" alt="Testimoni 1" style="border-radius: 50%;" />
                         </div>
                         <div class="col-8" style="color: white; margin-top:8vh;">2 Mingguan lah, saya rutin minum healtik itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
                         <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
+                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/glucosyifa.png" alt="glucosyifa" />
                         </div>
                     </div>
                 </div>
@@ -133,11 +263,12 @@
                 <div class="Containers-testi">
                     <div class="row">
                         <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
+                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/2.jpg" alt="Testimoni 2" style="border-radius: 50%;" />
+
                         </div>
                         <div class="col-8" style="color: white; margin-top:8vh;">2 lah, saya rutin minum healtik itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
                         <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
+                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/padharanfit.png" alt="padharanfit" />
                         </div>
                     </div>
                 </div>
@@ -145,7 +276,8 @@
                 <div class="Containers-testi">
                     <div class="row">
                         <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
+                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/3.jpg" alt="Testimoni 3" style="border-radius: 50%;" />
+
                         </div>
                         <div class="col-8" style="color: white; margin-top:8vh;">2 Mingguan lah, saya rutin minum itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
                         <div class="col-2">
@@ -173,7 +305,8 @@
                 <li class="news_list-item col-md-4">
                     <div class="news_list-item_wrapper d-flex flex-column">
                         <div class="media">
-                            <img class="lazy" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <p class="category_article">Kategori 1</p>
                         </div>
                         <div class="main d-flex flex-column justify-content-between">
                             <div class="main_metadata">
@@ -184,13 +317,18 @@
                             </div>
                             <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
                             <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
+                        </div>
+                        <div class="view_more" style="margin-top: 20px;">
+                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </li>
                 <li class="news_list-item col-md-4">
                     <div class="news_list-item_wrapper d-flex flex-column">
                         <div class="media">
-                            <img class="lazy" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <p class="category_article" style="background-color: green;">Kategori 2</p>
+
                         </div>
                         <div class="main d-flex flex-column justify-content-between">
                             <div class="main_metadata">
@@ -201,13 +339,18 @@
                             </div>
                             <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
                             <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
+                        </div>
+                        <div class="view_more" style="margin-top: 20px;">
+                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </li>
                 <li class="news_list-item col-md-4">
                     <div class="news_list-item_wrapper d-flex flex-column">
                         <div class="media">
-                            <img class="lazy" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
+                            <p class="category_article" style="background-color: purple;">Kategori 3</p>
+
                         </div>
                         <div class="main d-flex flex-column justify-content-between">
                             <div class="main_metadata">
@@ -218,6 +361,9 @@
                             </div>
                             <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
                             <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
+                        </div>
+                        <div class="view_more" style="margin-top: 20px;">
+                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </li>

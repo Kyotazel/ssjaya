@@ -16,7 +16,7 @@ $(".btn_login").click((e) => {
         dataType: "JSON",
         success: (data) => {
             if(data.status){
-                location.href = baseUrl + '/' + prefix_folder + '/home?token='+data.token;
+                location.href = baseUrl + '/' + prefix_folder + '/home';
             } else {                
                 if (data.error_login != '') {
                     $('.text-message').html(data.error_login);
@@ -27,7 +27,7 @@ $(".btn_login").click((e) => {
                 for (var i = 0; i < data.inputerror.length; i++)
                 {
                     $('[name="'+data.inputerror[i]+'"]').addClass('is-invalid');
-                    $('[name="'+data.inputerror[i]+'"]').next().next().text(data.error_string[i]);
+                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
                 }
             }
         }
