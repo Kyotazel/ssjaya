@@ -8,33 +8,17 @@ $("a[data-url='" + path_current + "']").addClass("active");
 $("a[data-url='" + path_current + "']").closest(".main-parent-menu").addClass("collapsed");
 
 function notif_success(message) {
-    Toastify({
-        text: `<div class="alert alert-success alert-dismissible alert-label-icon rounded-label fade show mb-0" role="alert">
-                    <i class="ri-check-double-line label-icon"></i>${message}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`,
-        // className: "success",
-        duration: 3000,
-        gravity: "top", // `top` or `bottom`
-        position: "right",
-        escapeMarkup : false,
-        close: false
-    }).showToast();
+    Swal.fire(
+        'Sukses!',
+        message,
+        'success'
+      )
 }
 
 function notif_error(message) {
-    Toastify({
-        text: `<div class="alert alert-danger alert-dismissible alert-label-icon rounded-label fade show mb-0" role="alert">
-                <i class="ri-error-warning-line label-icon"></i><strong>Error</strong> - ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>`,
-        className: "danger",
-        style: {
-            background: "linear-gradient(to right, #ff4747, #f72a2a)",
-        },
-        duration: 3000,
-        escapeMarkup : false,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-    }).showToast();
+    Swal.fire({
+        icon: 'error',
+        title: 'Kesalahan',
+        text: message,
+      })
 }

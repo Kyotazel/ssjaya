@@ -102,7 +102,7 @@
                                             <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
                                                 <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
                                                 <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
                                             </div>
@@ -118,7 +118,7 @@
                                             <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
                                                 <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
                                                 <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
                                             </div>
@@ -134,7 +134,7 @@
                                             <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
                                                 <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
                                                 <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
                                             </div>
@@ -150,7 +150,7 @@
                                             <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="content_product" style="margin-top: 40px; max-width: 80%">
+                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
                                                 <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
                                                 <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
                                             </div>

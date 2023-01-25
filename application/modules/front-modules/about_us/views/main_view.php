@@ -11,6 +11,15 @@
             <h2 class="features_header-title">Tentang Kami</h2>
         </div>
         <ul class="features-list d-md-flex flex-wrap justify-content-xl-between">
+            <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="3" data-aos="fade-up">
+                <span class="icon d-flex align-items-center justify-content-center">
+                    <i class="fas fa-clock" style="font-size: 44px;"></i>
+
+                </span>
+                <h4 class="title">Jam Kantor</h4>
+                <b class="text">09.00 – 17.00 WIB</b>
+                <b class="text">Senin - Jumat</b>
+            </li>
             <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="1" data-aos="fade-up">
                 <span class="icon d-flex align-items-center justify-content-center">
                     <i class="fa fa-home" style="font-size: 44px;"></i>
@@ -28,15 +37,7 @@
                     </p>
                 </div>
             </li>
-            <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="3" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fas fa-clock" style="font-size: 44px;"></i>
 
-                </span>
-                <h4 class="title">Jam Kantor</h4>
-                <b class="text">09.00 – 17.00 WIB</b>
-                <b class="text">Senin - Jumat</b>
-            </li>
             <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="2" data-aos="fade-up">
                 <span class="icon d-flex align-items-center justify-content-center">
                     <i class="fab fa-whatsapp" style="font-size: 44px;"></i>
@@ -47,36 +48,6 @@
                         <li class="list-item">
                             <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282327271919">
                                 <b>CS 1 (Dea)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282327270808">
-                                <b>CS 2 (Cindy)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282379790404">
-                                <b>CS 3 (Dina)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282189894949">
-                                <b>CS 4 (Ayik)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282189896363">
-                                <b>CS 5 (Yuli)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6285298988080">
-                                <b>CS 6 (Anis)</b>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282189894848">
-                                <b>CS 7 (Mirda)</b>
                             </a>
                         </li>
                     </ul>
@@ -99,7 +70,7 @@
                 <ul class="socials d-flex">
                     <li class="list-item" style="padding-right: 20px; padding-left: 20px">
                         <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                            <i class="icon-facebook"></i> 
+                            <i class="icon-facebook"></i>
                         </a>
                     </li>
                     <li class="list-item" style="padding-right: 20px; padding-left: 20px">

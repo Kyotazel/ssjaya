@@ -16,7 +16,7 @@ $(".btn_login").click((e) => {
         dataType: "JSON",
         success: (data) => {
             if(data.status){
-                location.href = baseUrl + '/' + prefix_folder + '/home';
+                location.href = baseUrl + '/' + prefix_folder + '/';
             } else {                
                 if (data.error_login != '') {
                     $('.text-message').html(data.error_login);

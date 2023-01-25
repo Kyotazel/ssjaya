@@ -28,12 +28,12 @@
 <div class="modal zoomIn" id="modal_form" tabindex="-1" aria-modal="true" role="dialog" data-keyboard="false" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form class="form_input">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="label_modal">Grid Modals</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
+            <div class="modal-header">
+                <h5 class="modal-title" id="label_modal">Grid Modals</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form_input">
                     <div class="row text-dark">
                         <!--end col-->
                         <div class="col-md-12">
@@ -97,15 +97,15 @@
                         <!--end col-->
                     </div>
                     <!--end row-->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary btn_save">
-                        <span class="spinner-grow spinner-grow-sm d-none" role="status"></span>
-                        Submit
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn_save">
+                    <span class="spinner-grow spinner-grow-sm d-none" role="status"></span>
+                    Submit
+                </button>
+            </div>
         </div>
     </div>
 </div>

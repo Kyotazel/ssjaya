@@ -30,24 +30,24 @@ class Template extends BackendController
             if ($parent->id == 0) {
                 $html .= '';
             } else{
-                $html .= "<li class='menu-title side-item-category'><span>$parent->name</span></li>";
+                $html .= "<li class='nav-small-cap'><span class='hide-menu'>$parent->name</span></li>";
             }
             $get_menu = Modules::run('database/find', 'app_menu', ['id_credential' => $menu_id, 'menu_type' => $parent->id, 'group' => NULL])->result();
             foreach ($get_menu as $value) {
 
                 if ($value->is_group == 0) {
                     $html .= "
-                <li class='nav-item'>
-                    <a href='". base_url('admin'.$value->link) ."' class='nav-link menu-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "'>
-                        <i class='nav-icon fas $value->icon'></i>
-                        <span>$value->name</span>";
+                <li class='sidebar-item'>
+                    <a href='". base_url('admin'.$value->link) ."' class='sidebar-link sidebar-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "' aria-expanded='false'>
+                        <i class='$value->icon'></i>
+                        <span class='hide-menu'>$value->name</span>";
                     $html .= "
                     </a>";
                 } else {
                     $html .= "
                 <li class='nav-item'>
                     <a href='#$value->link' class='nav-link menu-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "' data-bs-toggle='collapse' role='button' aria-expanded='false' aria-controls='sidebarDashboards'>
-                        <i class='nav-icon fas $value->icon'></i>
+                        <i class='$value->icon'></i>
                         <span>$value->name</span>
                     </a>";
                     $html .= "
