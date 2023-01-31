@@ -45,25 +45,24 @@ class Template extends BackendController
                     </a>";
                 } else {
                     $html .= "
-                <li class='nav-item'>
-                    <a href='#$value->link' class='nav-link menu-link' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "' data-bs-toggle='collapse' role='button' aria-expanded='false' aria-controls='sidebarDashboards'>
+                <li class='sidebar-item'>
+                    <a href='#$value->link' class='sidebar-link has-arrow' data-url='" . base_url(PREFIX_CREDENTIAL_DIRECTORY . $value->link) . "' aria-expanded='false'>
                         <i class='$value->icon'></i>
-                        <span>$value->name</span>
+                        <span class='hide-menu'>$value->name</span>
                     </a>";
                     $html .= "
-                    <div class='collapse menu-dropdown' id='$value->link'>
-                    <ul class='nav nav-sm flex-column'>";
+                    <ul aria-expanded='false' class='collapse  first-level base-level-line'>";
                     foreach(Modules::run('database/find', 'app_menu', ['group' => $value->id])->result() as $child)
                     {
                             $html .= "
-                        <li class='nav-item'>
-                            <a href='". base_url('admin'.$child->link) ."' class='nav-link' data-url='" . $child->link . "'>
-                              $child->name
+                        <li class='sidebar-item'>
+                            <a href='". base_url('admin'.$child->link) ."' class='sidebar-link' data-url='" . $child->link . "'>
+                              <span class='hide-menu'>$child->name</span>
                             </a>
                         </li>
                         ";
                     }
-                    $html .= "</ul></div>";
+                    $html .= "</ul>";
                 }
 
                 $html .= "</li>";

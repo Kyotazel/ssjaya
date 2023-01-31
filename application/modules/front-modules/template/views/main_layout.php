@@ -16,6 +16,7 @@
     <link rel="stylesheet preload" as="style" href="<?= base_url() ?>assets/themes/landing/css/libs.min.css" />
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/logo/favicon.png" type="image/x-icon">
 
+    <link href="<?= base_url() ?>assets/themes/velzon/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/themes/landing/css/index.min.css" />
@@ -45,6 +46,31 @@
             background-color: #214842;
             text-align: center;
         }
+
+        .nav-link {
+            color: #214842;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #214842;
+            bottom: 0;
+            left: 0;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform .3s ease-in-out;
+            }
+
+        .nav-link:hover::before {
+            transform-origin: left;
+            transform: scaleX(1);
+            }
     </style>
 </head>
 
@@ -72,7 +98,7 @@
                     </li>
                     <li class="header_nav-list_item">
                         <a class="nav-link d-inline-flex align-items-center" href="<?= base_url("list-mitra") ?>">
-                            List Mitra Apotek
+                            Mitra Apotek
                         </a>
                     </li>
                     <li class="header_nav-list_item">
@@ -108,6 +134,33 @@
 
     <footer class="footer">
         <div class="footer_main section" style="padding-bottom: 40px; padding-top: 40px;">
+            <div class="row mb-5">
+                <div class="col-md-6" style="padding-left: 40px;">
+                    <h4 style="color: white;">Follow Us</h4>
+                </div>
+                <div class="col-md-6">
+                    <ul class="social s  d-flex align-items-center accent" style="float: right; padding-right: 40px">
+                        <li class="list-item" style="padding-right: 20px;">
+                            <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
+                                <i class="icon-facebook icon"></i>
+                            </a>
+                        </li>
+                        <li class="list-item" style="padding-right: 20px;">
+                            <a class="link" href="https://instagram.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
+                                <i class="icon-instagram icon"></i>
+                            </a>
+                        </li>
+                        <li class="list-item" style="padding-right: 20px;">
+                            <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
+                                <i class="icon-mail icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12" style="padding: 2%;">
+                    <hr>
+                </div>
+            </div>
             <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
                 <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
                     <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
@@ -126,23 +179,7 @@
                         <p class="text">
                             Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
                         </p>
-                        <ul class="socials d-flex align-items-center accent">
-                            <li class="list-item">
-                                <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                                    <i class="icon-facebook icon"></i>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="https://instagram.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                                    <i class="icon-instagram icon"></i>
-                                </a>
-                            </li>
-                            <li class="list-item">
-                                <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
-                                    <i class="icon-mail icon"></i>
-                                </a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
                 <div class="footer_main-nav footer_main-block col-md-6 col-xl-auto">
@@ -237,7 +274,7 @@
                             </picture>
                         </li>
                     </ul>
-                    <h4 class="footer_main-instagram_header footer_main-header">Toko Online & Jasa Pengiriman</h4>
+                    <h4 class="footer_main-instagram_header footer_main-header">Toko Online</h4>
                     <ul class="socials d-flex align-items-center accent">
                         <li class="list-item">
                             <a class="link" href="#" target="_blank" rel="noopener norefferer">
@@ -255,6 +292,7 @@
                             </a>
                         </li>
                     </ul>
+                    <h4 class="footer_main-instagram_header footer_main-header mt-4">Jasa Pengiriman</h4>
                     <ul class="socials d-flex align-items-center accent mt-3">
                         <li class="list-item">
                             <a class="link" href="#" target="_blank" rel="noopener norefferer">
@@ -288,6 +326,8 @@
     <script src="<?= base_url() ?>assets/themes/landing/js/index.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-grid@0.4.1/dist/js/splide-extension-grid.min.js"></script>
+    <script src="<?= base_url() ?>assets/themes/velzon/libs/sweetalert2/sweetalert2.min.js"></script>
 
     <?php
     echo '

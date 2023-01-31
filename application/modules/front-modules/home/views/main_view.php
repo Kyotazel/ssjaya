@@ -57,18 +57,11 @@
 <section class="carousel">
     <div class="slideshow-container fadeee">
 
-        <!-- Full images with numbers and message Info -->
-        <div class="Containers">
-            <img src="<?= base_url() ?>assets/images/example/1280x450.png" style="width:100%">
+        <?php foreach($carousel as $value) : ?>
+            <div class="Containers">
+            <img src="<?= base_url() ?>assets/images/uploads/<?= $value->photo ?>" style="width:100%">
         </div>
-
-        <div class="Containers">
-            <img src="<?= base_url() ?>assets/images/example/1280x450.png" style="width:100%">
-        </div>
-
-        <div class="Containers">
-            <img src="<?= base_url() ?>assets/images/example/1280x450.png" style="width:100%">
-        </div>
+        <?php endforeach ?>
 
         <!-- Back and forward buttons -->
         <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
@@ -78,9 +71,9 @@
 
     <!-- The circles/dots -->
     <div style="text-align:center">
-        <span class="dots" onclick="currentSlide(1)"></span>
-        <span class="dots" onclick="currentSlide(2)"></span>
-        <span class="dots" onclick="currentSlide(3)"></span>
+    <?php foreach($carousel as $key => $value) : ?>
+        <span class="dots" onclick="currentSlide(<?= $key + 1 ?>)"></span>
+    <?php endforeach ?>
     </div>
 </section>
 
@@ -177,61 +170,6 @@
                     </li>
                 </ul>
             </div>
-            <!-- <div class="products_list d-grid">
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="products_list-item">
-                    <div class="products_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <a href="product.html" target="_blank" rel="noopener norefferer" style="margin: auto;">
-                                <img class="lazy preview" data-src="<?= base_url() ?>assets/images/product/gokoles.png" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="height: 200px" />
-                            </a>
-                        </div>
-                        <div class="main d-flex flex-column align-items-center justify-content-between">
-                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">Gokoles</a>
-                            <div class="main_price">
-                                <span class="price">Rp. 220.000</span>
-                            </div>
-                            <a class="btn btn--green" href="#" style="font-size: 16px;">
-                                <span>Lihat Selengkapnya</span>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
         </div>
     </div>
     </div>
@@ -245,52 +183,25 @@
                     <h2 style="color: white;">Ulasan Customer Kami</h2>
                 </div>
             </div>
-            <div class="slideshow-container-testi fadeee-testi">
-
-                <!-- Full images with numbers and message Info -->
-                <div class="Containers-testi">
-                    <div class="row">
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/4.jpg" alt="Testimoni 1" style="border-radius: 50%;" />
-                        </div>
-                        <div class="col-8" style="color: white; margin-top:8vh;">2 Mingguan lah, saya rutin minum healtik itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/glucosyifa.png" alt="glucosyifa" />
-                        </div>
-                    </div>
+            <section id="testimoni-carounsel" class="splide my-4" aria-label="My Awesome Gallery">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <?php foreach($testimoni as $value) : ?>
+                        <li class="splide__slide" data-splide-interval="3000">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->foto ?>" alt="<?= $value->nama ?>" style="border-radius: 50%;" />
+                                </div>
+                                <div class="col-8" style="color: white; margin-top:8vh;"><?= $value->komentar ?></div>
+                                <div class="col-2">
+                                    <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->filename ?>" alt="<?= $value->product_name ?>" />
+                                </div>
+                            </div>
+                        </li>
+                        <?php endforeach ?>
+                    </ul>
                 </div>
-
-                <div class="Containers-testi">
-                    <div class="row">
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/2.jpg" alt="Testimoni 2" style="border-radius: 50%;" />
-
-                        </div>
-                        <div class="col-8" style="color: white; margin-top:8vh;">2 lah, saya rutin minum healtik itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/padharanfit.png" alt="padharanfit" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="Containers-testi">
-                    <div class="row">
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/themes/admin/assets/images/users/3.jpg" alt="Testimoni 3" style="border-radius: 50%;" />
-
-                        </div>
-                        <div class="col-8" style="color: white; margin-top:8vh;">2 Mingguan lah, saya rutin minum itu, alhamdulillah kok nyeri pada lutut dan tangan berangsur-angsur membaik. Terima kasih Healtik.</div>
-                        <div class="col-2">
-                            <img class="lazy preview" src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Back and forward buttons -->
-                <a class="Back-testi" onclick="plusSlidesTesti(-1)">&#10094;</a>
-                <a class="forward-testi" onclick="plusSlidesTesti(1)">&#10095;</a>
-            </div>
-            <br>
+            </section>
         </div>
     </section>
 </section>

@@ -9,9 +9,13 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {
-                "targets": [3, 5, 6],
+                "targets": [5,6],
                 "class": "text-center"
             },
+            {
+                "targets": 4,
+                "class": "text-wrap",
+            }
         ],
     })
 })
@@ -52,25 +56,59 @@ $(document).on('click', '.btn_delete', function () {
     });
 });
 
-$(document).on('click', '.change_status', function () {
-    var selector = $(this);
-    $(this).find('input').prop('checked');
-    update_status(selector)
 
+$(document).on('click', '.change_to_active', function () {
+    var selector = $(this);
+    let status = 1;
+    Swal.fire({
+        icon: 'question',
+        text: 'Ganti menjadi aktif?',
+        showCancelButton: true,
+        confirmButtonClass: 'btn btn-primary rounded-pill w-xs me-2 mb-1 mr-3',
+        confirmButtonText: "Ya , Lanjutkan",
+        cancelButtonText: "Batal",
+        cancelButtonClass: 'btn btn-danger rounded-pill w-xs mb-1',
+        closeOnConfirm: true,
+        closeOnCancel: true,
+        buttonsStyling: false,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            update_status(selector, status)
+        }
+    })
 });
 
-function update_status(selector) {
+$(document).on('click', '.change_to_not_active', function () {
+    var selector = $(this);
+    let status = 0;
+    Swal.fire({
+        icon: 'question',
+        text: 'Ganti menjadi tidak aktif?',
+        showCancelButton: true,
+        confirmButtonClass: 'btn btn-primary rounded-pill w-xs me-2 mb-1 mr-3',
+        confirmButtonText: "Ya , Lanjutkan",
+        cancelButtonText: "Batal",
+        cancelButtonClass: 'btn btn-danger rounded-pill w-xs mb-1',
+        closeOnConfirm: true,
+        closeOnCancel: true,
+        buttonsStyling: false,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            update_status(selector, status)
+        }
+    })
+});
+
+
+function update_status(selector, status) {
     var id = selector.data('id');
-    var field = selector.data('status');
-    active_status = selector.find('input').prop('checked') ? 1 : 0;
     $.ajax({
         url: url_controller + 'update_status',
         type: "POST",
         dataType: "JSON",
         data: {
             'id': id,
-            'status': active_status,
-            'field': field
+            'status': status
         },
         success: function (data) {
             if (data.status) {
@@ -87,6 +125,7 @@ function update_status(selector) {
 
 function add() {
     save_method = 'add';
+    $('.update_photo').css('display', 'none');
     $('.form_input')[0].reset();
     $('.modal-title').html('TAMBAH DATA');
     $('.invalid-feedback').empty();
@@ -153,12 +192,11 @@ $(document).on('click', '.btn_edit', function () {
         data: {id: id_use},
         success: function (data) {
             if (data.status) {
-                $('[name="name"]').val(data.data.name);
-                $('[name="link"]').val(data.data.link);
-                $('[name="icon"]').val(data.data.icon);
-                $('[name="menu_type"]').val(data.data.menu_type);
-                $('[name="is_group"]').val(data.data.is_group);
-                $('[name="group"]').val(data.data.group);
+                $('.update_photo').css('display', 'block');
+                $('[name="nama"]').val(data.data.nama);
+                $('[name="komentar"]').val(data.data.komentar);
+                $('[name="jabatan"]').val(data.data.jabatan);
+                $('[name="id_produk"]').val(data.data.id_produk);
                 $('#modal_form').modal('show');
             }
         },
@@ -167,3 +205,10 @@ $(document).on('click', '.btn_edit', function () {
         }
     })
 })
+
+$(document).on('click', '[data-toggle="modal"]', function () {
+    var titleLabel = $(this).data('title');
+    var imageSrc = $(this).data('img');
+    $("#modalImage").attr("src", imageSrc);
+    $("#imageModalLabel").text(titleLabel);
+});

@@ -52,13 +52,13 @@
                                         <label for="is_group">Apakah Group?</label>
                                         <div class="row">
                                             <div class="icheck-primary d-block col-md-6">
-                                                <input type="radio" id="is_group" name="is_group" value="1">
+                                                <input type="radio" name="is_group" value="1">
                                                 <label for="is_group">
                                                     Iya
                                                 </label>
                                             </div>
                                             <div class="icheck-primary d-block col-md-6">
-                                                <input type="radio" id="is_group" name="is_group" value="0" checked>
+                                                <input type="radio" name="is_group" value="0" checked>
                                                 <label for="is_group">
                                                     Tidak
                                                 </label>

@@ -33,4 +33,44 @@ class List_mitra extends BackendController
         $this->app_data['view_file']    = 'main_view';
         echo Modules::run('template/main_layout', $this->app_data);
     }
+
+    public function mitra()
+    {
+        $city = $this->input->post('city');
+        $apotek = $this->input->post('apotek');
+
+        $array_data = [
+            'select' => "a.*, b.nama as nama_sales",
+            "from" => "sales_apotek a",
+            'join' => [
+                'sales_user b, a.id_sales = b.id_sales, left'
+            ],
+            "where" => "kota = '$city' AND nama_apotek LIKE '%$apotek%'"
+        ];
+
+        $get_data = Modules::run('database/get', $array_data)->result();
+
+        $html = "";
+        if($get_data) {
+            $html .= '<ul class="splide__list">';
+            foreach($get_data as $value) {
+                $html .= "<li class='splide__slide'>
+                <div class='products_list-item_wrapper d-flex flex-column'>
+                    <div class='main d-flex flex-column justify-content-between'>
+                        <h4 class='main_title'>$value->nama_apotek</h4>
+                        <p style='margin-bottom: 12px; text-align: center'>$value->alamat.</p>
+                        <p style='text-align: left;'><b>Produk</b> : $value->produk</p>
+                        <p style='text-align: left;'><b>Sales</b> : $value->nama_sales</p>
+                    </div>
+                </div>
+            </li>";
+            }
+            $html .= "</ul>";
+            echo json_encode(['status' => true, 'html_mitra' => $html]);
+        } else {
+            $html = "<h2 style='text-align: center'>Data Tidak Ditemukan</h2>";
+            echo json_encode(['html_mitra' => $html]);
+        }
+
+    }
 }

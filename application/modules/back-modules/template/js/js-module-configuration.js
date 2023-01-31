@@ -8,17 +8,21 @@ $("a[data-url='" + path_current + "']").addClass("active");
 $("a[data-url='" + path_current + "']").closest(".main-parent-menu").addClass("collapsed");
 
 function notif_success(message) {
-    Swal.fire(
-        'Sukses!',
-        message,
-        'success'
-      )
+    Swal.fire({
+        title: 'Sukses!',
+        html: message,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+    })
 }
 
 function notif_error(message) {
     Swal.fire({
         icon: 'error',
         title: 'Kesalahan',
-        text: message,
+        html: message,
+        showConfirmButton: false,
+        timer: 1500
       })
 }

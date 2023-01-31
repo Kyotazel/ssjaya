@@ -160,6 +160,8 @@ class App_menu extends BackendController
         $menu_type  = $this->input->post('menu_type');
         $is_group   = $this->input->post('is_group');
 
+        echo $is_group;
+
         if(empty($this->input->post('group'))) {
             $group = null;
         } else {

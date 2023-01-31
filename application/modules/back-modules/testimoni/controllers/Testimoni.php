@@ -24,8 +24,7 @@ class Testimoni extends BackendController
 
     public function index()
     {
-        $this->app_data['category']     = Modules::run('database/get_all', 'app_menu_category')->result();
-        $this->app_data['group']        = Modules::run('database/find', 'app_menu', ['is_group' => 1])->result();
+        $this->app_data['list_produk']  = Modules::run('database/get_all', 'blw_produk')->result();
         $this->app_data['page_title']   = 'Testimoni';
         $this->app_data['view_file']    = 'main_view';
         echo Modules::run('template/main_layout', $this->app_data);
@@ -35,24 +34,39 @@ class Testimoni extends BackendController
     {
         $id = $this->input->post('id');
         if (!$id) {
-            $get_all = Modules::run('database/get_all', 'app_menu')->result();
+            $array_query = [
+                "select" => "a.*, b.nama as nama_produk, c.nama as filename",
+                "from" => "blw_testimoni a",
+                "join" => [
+                    "blw_produk b, a.id_produk = b.id, left",
+                    "blw_upload c, b.id = c.idproduk, left"
+                ]
+            ];
+            $get_all = Modules::run('database/get', $array_query)->result();
 
             $no = 0;
             $data = [];
             foreach($get_all as $value) {
                 $id_encrypt = $this->encryption->encrypt($value->id);
-                $get_type = Modules::run('database/find', 'app_menu_category', ['id' => $value->menu_type])->row();
 
-                $get_menu = Modules::run('database/find', 'app_menu', ['id' => $value->group])->row();
+                $produk = "";
+                if($value->nama_produk) {
+                    $produk = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama_produk' data-img='" . base_url('assets/images/uploads/') . $value->filename . "' class='btn btn-success'>$value->nama_produk</a>";
+                }
+
+                $status = "<button class='btn btn-sm btn-danger change_to_active' data-id='" . $id_encrypt . "'>Tidak Aktif</button>";
+                if($value->status) {
+                    $status = "<button class='btn btn-sm btn-success change_to_not_active' data-id='" . $id_encrypt . "'>Aktif</button>";
+                }
 
                 $no++;
                 $row = [];
                 $row[] = $no;
-                $row[] = $value->name;
-                $row[] = $value->link;
-                $row[] = "<i class='$value->icon' style='font-size: 20px'></i>";
-                $row[] = ($get_menu) ? $get_menu->name : '';
-                $row[] = "<h5><span class='badge bg-secondary'>$get_type->name</span></h5>";
+                $row[] = $value->nama;
+                $row[] = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->foto . "'><img src='" . base_url('assets/images/uploads/') . $value->foto . "' style='height: 100px; width: auto' /></a>";
+                $row[] = $produk;
+                $row[] = $value->komentar;
+                $row[] = $status;
                 $row[] = " <button class='btn btn-warning btn-sm btn_edit' data-id='$id_encrypt'><i class='ri-ball-pen-line'></i> Edit</button>
                 <button class='btn btn-danger btn-sm btn_delete' data-id='$id_encrypt'><i class='ri-delete-bin-line'></i> Hapus</button>";
                 $data[] = $row;
@@ -60,7 +74,7 @@ class Testimoni extends BackendController
             $output = ["data" => $data];
         } else {
             $id = $this->encryption->decrypt($id);
-            $data = Modules::run('database/find', 'app_menu', ['id' => $id])->row();
+            $data = Modules::run('database/find', 'blw_testimoni', ['id' => $id])->row();
 
             $output = array (
                 "data" => $data,
@@ -75,20 +89,19 @@ class Testimoni extends BackendController
     {
         $id = $this->encryption->decrypt($this->input->post('id'));
 
-        Modules::run('database/delete', 'app_menu', ['id' => $id]);
+        Modules::run('database/delete', 'blw_testimoni', ['id' => $id]);
 
         echo json_encode(['status' => TRUE]);
     }
 
     public function update_status() {
-        $id       = $this->encryption->decrypt($this->input->post('id'));
-        $status   = $this->input->post('status');
-        $field    = $this->input->post('field');
+        $id         = $this->encryption->decrypt($this->input->post('id'));
+        $status     = $this->input->post('status');
 
-        if ($field == 'status') {
-            $array_update = ['is_active' => $status];
-        }
-        Modules::run('database/update', 'app_menu_category', ['id' => $id], $array_update);
+        $array_update = [
+            'status' => $status
+        ];
+        Modules::run('database/update', 'blw_testimoni', ['id' => $id], $array_update);
         echo json_encode(['status' => true]);
     }
 
@@ -98,19 +111,24 @@ class Testimoni extends BackendController
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if ($this->input->post('name') == '') {
+        if ($this->input->post('nama') == '') {
             $data['error_string'][] = 'Harus Diisi';
-            $data['inputerror'][] = 'name';
+            $data['inputerror'][] = 'nama';
             $data['status'] = FALSE;
         }
-        if ($this->input->post('menu_type') == '') {
+        if ($this->input->post('jabatan') == '') {
             $data['error_string'][] = 'Harus Diisi';
-            $data['inputerror'][] = 'menu_type';
+            $data['inputerror'][] = 'jabatan';
             $data['status'] = FALSE;
         }
-        if ($this->input->post('is_group') == '') {
+        if ($this->input->post('id_produk') == '') {
             $data['error_string'][] = 'Harus Diisi';
-            $data['inputerror'][] = 'is_group';
+            $data['inputerror'][] = 'id_produk';
+            $data['status'] = FALSE;
+        }
+        if ($this->input->post('komentar') == '') {
+            $data['error_string'][] = 'Harus Diisi';
+            $data['inputerror'][] = 'komentar';
             $data['status'] = FALSE;
         }
         if ($data['status'] == FALSE) {
@@ -122,30 +140,24 @@ class Testimoni extends BackendController
     public function save()
     {
         $this->validate();
-        $name       = $this->input->post('name');
-        $link       = $this->input->post('link');
-        $icon       = $this->input->post('icon');
-        $menu_type  = $this->input->post('menu_type');
-        $is_group   = $this->input->post('is_group');
+        $nama       = $this->input->post('nama');
+        $jabatan    = $this->input->post('jabatan');
+        $id_produk  = $this->input->post('id_produk');
+        $komentar   = $this->input->post('komentar');
 
-        if(empty($this->input->post('group'))) {
-            $group = null;
-        } else {
-            $group = $this->input->post('group');
-        }
+        $foto = $this->upload_image();
 
         $array_insert = [
-            'name' => $name,
-            'link' => $link,
-            'icon' => $icon,
-            'group' => $group,
-            'menu_type' => $menu_type,
-            'is_group' => $is_group,
-            'created_by' => $this->session->userdata('us_id'),
-            'id_credential' => 1
+            'nama' => $nama,
+            'jabatan' => $jabatan,
+            'id_produk' => $id_produk,
+            'komentar' => $komentar,
+            'foto' => $foto,
+            'status' => 1,
+            'tgl' => date('Y-m-d h:i:s')
         ];
 
-        Modules::run('database/insert', 'app_menu', $array_insert);
+        Modules::run('database/insert', 'blw_testimoni', $array_insert);
 
         echo json_encode(['status' => TRUE]);
     }
@@ -154,32 +166,42 @@ class Testimoni extends BackendController
     {
         $this->validate();
         $id = $this->encryption->decrypt($this->input->post('id'));
-        $name       = $this->input->post('name');
-        $link       = $this->input->post('link');
-        $icon       = $this->input->post('icon');
-        $menu_type  = $this->input->post('menu_type');
-        $is_group   = $this->input->post('is_group');
-
-        if(empty($this->input->post('group'))) {
-            $group = null;
-        } else {
-            $group = $this->input->post('group');
-        }
+        $nama       = $this->input->post('nama');
+        $jabatan    = $this->input->post('jabatan');
+        $id_produk  = $this->input->post('id_produk');
+        $komentar   = $this->input->post('komentar');
 
         $array_update = [
-            'name' => $name,
-            'link' => $link,
-            'icon' => $icon,
-            'group' => $group,
-            'menu_type' => $menu_type,
-            'is_group' => $is_group,
-            'id_credential' => 1,
-            "updated_date"  => date('Y-m-d H:i:s'),
-            "updated_by"    => $this->session->userdata('us_id')
+            'nama' => $nama,
+            'jabatan' => $jabatan,
+            'id_produk' => $id_produk,
+            'komentar' => $komentar,
         ];
 
-        Modules::run('database/update', 'app_menu', ['id' => $id], $array_update);
+        $foto = $this->upload_image();
+        if ($foto !== '') {
+            $foto = ["foto" => $foto];
+            $array_update = array_merge($array_update, $foto);
+        }
+
+        Modules::run('database/update', 'blw_testimoni', ['id' => $id], $array_update);
 
         echo json_encode(['status' => TRUE]);
+    }
+
+    private function upload_image()
+    {
+        $config['upload_path']          = realpath(APPPATH . '../assets/images/uploads');
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['file_name']            = round(microtime(true) * 1000); //just milisecond timestamp fot unique name
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('image')) //upload and validate
+        {
+            return '';
+        } else {
+            $upload_data = $this->upload->data();
+            $image_name = $upload_data['file_name'];
+            return $image_name;
+        }
     }
 }

@@ -11,79 +11,40 @@
             <h2 class="features_header-title">Tentang Kami</h2>
         </div>
         <ul class="features-list d-md-flex flex-wrap justify-content-xl-between">
-            <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="3" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fas fa-clock" style="font-size: 44px;"></i>
-
-                </span>
-                <h4 class="title">Jam Kantor</h4>
-                <b class="text">09.00 – 17.00 WIB</b>
-                <b class="text">Senin - Jumat</b>
-            </li>
             <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="1" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fa fa-home" style="font-size: 44px;"></i>
-                </span>
-                <h4 class="title">Alamat</h4>
+                <h4 class="title mb-4">Alamat Kantor</h4>
                 <div class="content">
-                    <b>Warehouse</b>
-                    <p class="text">
-                        Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
-                    </p>
-                    <br>
                     <b>Kantor Marketing</b>
                     <p class="text">
                         Perum Mutiara Jayabaya Blok C 17, Kec. Mojoroto, Kota Kediri, Jawa Timur.
                     </p>
+                    <br>
+                    <b>Warehouse</b>
+                    <p class="text">
+                        Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
+                    </p>
                 </div>
             </li>
-
             <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="2" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fab fa-whatsapp" style="font-size: 44px;"></i>
-                </span>
-                <h4 class="title">Customer Service Number</h4>
-                <div class="content">
-                    <ul class="footer_main-nav_list d-flex flex-wrap flex-md-column">
-                        <li class="list-item">
-                            <a class="link d-inline-flex align-items-center" href="https://wa.me/+6282327271919">
-                                <b>CS 1 (Dea)</b>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <h4 class="title">Visi</h4>
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi voluptatem, nostrum vitae ducimus, non aliquam, vero error officia voluptas fugit fuga sit qui harum libero minus quae necessitatibus. Quis.</p>
             </li>
-            <li class="features-list_item col-md-6 col-xl-6 d-flex flex-column align-items-center" data-order="4" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fas fa-phone" style="font-size: 44px;"></i>
-
-                </span>
-                <h4 class="title">No Telepon</h4>
-                <a href="tel:+6282371719393" class="text"><b>+6282371719393</b></a>
-            </li>
-            <li class="features-list_item col-md-6 col-xl-6 d-flex flex-column align-items-center" data-order="4" data-aos="fade-up">
-                <span class="icon d-flex align-items-center justify-content-center">
-                    <i class="fab fa-instagram" style="font-size: 44px;"></i>
-
-                </span>
-                <h4 class="title">Media Sosial</h4>
-                <ul class="socials d-flex">
-                    <li class="list-item" style="padding-right: 20px; padding-left: 20px">
-                        <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                            <i class="icon-facebook"></i>
-                        </a>
-                    </li>
-                    <li class="list-item" style="padding-right: 20px; padding-left: 20px">
-                        <a class="link" href="https://instagram.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                            <i class="icon-instagram"></i>
-                        </a>
-                    </li>
-                    <li class="list-item" style="padding-right: 20px; padding-left: 20px">
-                        <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
-                            <i class="icon-mail"></i>
-                        </a>
-                    </li>
+            <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="3" data-aos="fade-up">
+                <h4 class="title">Misi</h4>
+                <ul style="text-align: left;">
+                    <li>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, consequatur.</li>
+                    <li>2. Lorem ipsum dolor sit amet.</li>
+                    <li>3. Lorem, ipsum dolor sit amet consectetur adipisicing.</li>
+                    <li>4. Lorem ipsum dolor sit.</li>
                 </ul>
+            </li>
+            <li class="features-list_item col-md-6 col-xl-4 d-flex flex-column align-items-center" data-order="4" data-aos="fade-up">
+                <h4 class="title">Foto Kantor</h4>
+                <img src="<?= base_url('assets/images/example/examplekantor.jpg') ?>" alt="Gambar Kantor" style="width: 80%;">
+            </li>
+            <li class="features-list_item col-md-6 col-xl-8 d-flex flex-column align-items-center" data-order="5" data-aos="fade-up">
+                <h4 class="title">Alamat Kantor</h4>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15810.173125325015!2d112.0008265!3d-7.8380643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574b2d30520f%3A0x61ec4e01ff56dbfd!2sCV.%20SS%20JAYA%20GRUP!5e0!3m2!1sid!2sid!4v1675083535880!5m2!1sid!2sid" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </li>
         </ul>
     </div>

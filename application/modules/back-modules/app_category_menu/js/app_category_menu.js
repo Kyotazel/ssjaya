@@ -1,5 +1,5 @@
 var url_controller = baseUrl + '/' + prefix_folder + '/' + _controller + '/';
-var _token = "?token=" + _token_user
+var _token = ""
 var table, save_method, id_use;
 
 $(document).ready(function () {
@@ -73,7 +73,6 @@ $(document).on('click', '.change_status', function () {
     var selector = $(this);
     $(this).find('input').prop('checked');
     update_status(selector)
-
 });
 
 function update_status(selector) {

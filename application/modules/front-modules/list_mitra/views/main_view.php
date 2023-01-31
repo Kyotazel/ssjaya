@@ -24,82 +24,28 @@
     <div class="featured" style="padding-top: 20px">
         <div class="container">
             <div class="featured_header">
-                <h2 class="featured_header-title">List Mitra</h2>
+                <h2 class="featured_header-title">Daftar Mitra Apotek</h2>
             </div>
             <div class="filter" style="margin: auto; width: 90%; text-align: center">
-                <input class="myInput" list="listCity" name="city" type="text" placeholder="Masukkan Kota" />
+                <input class="myInput" list="listCity" name="city" type="text" id="city" placeholder="Cari Area" />
                 <datalist id="listCity">
                     <?php foreach ($list_city as $city) : ?>
                         <option value="<?= $city->kota ?>"></option>
                     <?php endforeach ?>
                 </datalist>
-                <input class="myInput" type="text" placeholder="Cari Kata" />
-                <button class="mybutton"><i class="fa fa-search"></i> Cari </button>
+                <input class="myInput" type="text" placeholder="Cari Apotek" id="apotek" />
+                <button class="mybutton" type="button"><i class="fa fa-search"></i> Cari </button>
             </div>
-            <div class="list-mitra" style="margin-top: 40px;">
-                <div class="products_list d-grid">
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products_list-item">
-                        <div class="products_list-item_wrapper d-flex flex-column">
-                            <div class="main d-flex flex-column justify-content-between">
-                                <h4 class="main_title">Apotek Kirana</h4>
-                                <p style="margin-bottom: 12px; text-align: center">Bandar Lor, Kec Mojoroto Kota Kediri.</p>
-                                <p style="text-align: left;"><b>Produk</b> : Gokoles, Healtik, Solubet, Padharanfit, Titan Gel</p>
-                                <p style="text-align: left;"><b>Sales</b> : agung0</p>
-                            </div>
-                        </div>
-                    </div>
+            <section>
+                <div id="not_found" class="my-4"></div>
+            </section>
+            <section id="list-carousel" class="splide my-4" aria-label="My Awesome Gallery">
+                <div class="splide__track" id="list_mitra">
+                    <ul class="splide__list">
+                        
+                    </ul>
                 </div>
-            </div>
+            </section>
         </div>
 </section>
 

@@ -17,11 +17,17 @@
     <link href="<?= base_url() ?>assets/themes/admin/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/themes/velzon/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/themes/velzon/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-	<script>
+    <script>
         //configuration
         var _controller = '<?= $this->router->fetch_class(); ?>';
         var _base_url = '<?= substr(base_url(), 0, strlen(base_url()) - 1); ?>';
     </script>
+
+<style>
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+</style>
 
 </head>
 
@@ -46,14 +52,13 @@
             <nav class="navbar top-navbar navbar-expand-md">
                 <div class="navbar-header" data-logobg="skin6">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                            class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="docs.html">
+                        <a href="#">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="<?= base_url() ?>assets/images/logo/favicon.png" alt="homepage" class="dark-logo" />
@@ -64,9 +69,9 @@
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
-                                <img src="<?= base_url() ?>assets/images/logo/logo-text.png" alt="homepage" class="dark-logo" style="height: 28px;"/>
+                                <img src="<?= base_url() ?>assets/images/logo/logo-text.png" alt="homepage" class="dark-logo" style="height: 28px;" />
                                 <!-- Light Logo text -->
-                                <img src="<?= base_url() ?>assets/images/logo/logo-text.png" class="light-logo" alt="homepage" style="height: 200px;"/>
+                                <img src="<?= base_url() ?>assets/images/logo/logo-text.png" class="light-logo" alt="homepage" style="height: 200px;" />
                             </span>
                         </a>
                     </div>
@@ -76,10 +81,7 @@
                     <!-- ============================================================== -->
                     <!-- Toggle which is visible on mobile only -->
                     <!-- ============================================================== -->
-                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
-                        data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
-                            class="ti-more"></i></a>
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -93,7 +95,7 @@
                         <!-- create new -->
                         <!-- ============================================================== -->
                         <li class="nav-item">
-                            <a class="nav-link" href="docs.html" role="button">
+                            <a class="nav-link" href="#" role="button">
                                 <?= $page_title ?>
                             </a>
                         </li>
@@ -115,7 +117,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <?= $html_main_menu ?>
-                        
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -154,7 +156,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                    <?php $this->load->view("$module_directory/$view_file"); ?>
+                        <?php $this->load->view("$module_directory/$view_file"); ?>
                     </div>
                 </div>
             </div>
@@ -184,7 +186,7 @@
     <!-- ============================================================== -->
     <script src="<?= base_url() ?>assets/themes/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/themes/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="<?= base_url()?>assets/themes/admin/assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="<?= base_url() ?>assets/themes/admin/assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="<?= base_url() ?>assets/themes/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <script src="<?= base_url() ?>assets/themes/admin/dist/js/app-style-switcher.js"></script>
@@ -197,6 +199,8 @@
     <script src="<?= base_url() ?>assets/themes/velzon/libs/feather-icons/feather.min.js"></script>
     <!-- Sweet Alerts js -->
     <script src="<?= base_url() ?>assets/themes/velzon/libs/sweetalert2/sweetalert2.min.js"></script>
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
     <!--Custom JavaScript -->
     <script src="<?= base_url() ?>assets/themes/admin/dist/js/custom.min.js"></script>
 

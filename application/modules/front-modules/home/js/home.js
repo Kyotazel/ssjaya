@@ -30,32 +30,7 @@ function SlideShow(n) {
   circles[slidePosition-1].className += " enable";
 } 
 
-// Testimoni
-var slidePositionTesti = 1;
-SlideShowTesti(slidePositionTesti);
-
-// forward/Back controls
-function plusSlidesTesti(n) {
-  SlideShowTesti(slidePositionTesti += n);
-}
-
-//  images controls
-function currentSlide(n) {
-  SlideShowTesti(slidePositionTesti = n);
-}
-
-function SlideShowTesti(n) {
-  let i;
-  let slides = document.getElementsByClassName("Containers-testi");
-  if (n > slides.length) {slidePositionTesti = 1}
-  if (n < 1) {slidePositionTesti = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  slides[slidePositionTesti-1].style.display = "block";
-} 
-
-var splide = new Splide( '#main-carousel', {
+var product = new Splide( '#main-carousel', {
   type: 'loop',
   autoplay: 'playing',
   pagination: false,
@@ -71,12 +46,12 @@ for ( var i = 0; i < thumbnails.length; i++ ) {
 
 function initThumbnail( thumbnail, index ) {
   thumbnail.addEventListener( 'click', function () {
-    splide.go( index );
+    product.go( index );
   } );
 }
 
-splide.on( 'mounted move', function () {
-  var thumbnail = thumbnails[ splide.index ];
+product.on( 'mounted move', function () {
+  var thumbnail = thumbnails[ product.index ];
 
   if ( thumbnail ) {
     if ( current ) {
@@ -88,4 +63,13 @@ splide.on( 'mounted move', function () {
   }
 } );
 
-splide.mount();
+product.mount();
+
+// Testimoni
+var testimoni = new Splide( '#testimoni-carounsel', {
+  type: 'loop',
+  autoplay: 'playing',
+  rewind: true,
+} );
+
+testimoni.mount();
