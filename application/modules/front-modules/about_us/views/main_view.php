@@ -5,7 +5,7 @@
         padding-bottom: 40px;
     }
 </style>
-<section class="features" style="margin-bottom: 40px; padding-top:20px">
+<section class="features" style="padding-bottom: 40px; padding-top:20px">
     <div class="container">
         <div class="features_header">
             <h2 class="features_header-title">Tentang Kami</h2>
@@ -44,7 +44,7 @@
             </li>
             <li class="features-list_item col-md-6 col-xl-8 d-flex flex-column align-items-center" data-order="5" data-aos="fade-up">
                 <h4 class="title">Alamat Kantor</h4>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15810.173125325015!2d112.0008265!3d-7.8380643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574b2d30520f%3A0x61ec4e01ff56dbfd!2sCV.%20SS%20JAYA%20GRUP!5e0!3m2!1sid!2sid!4v1675083535880!5m2!1sid!2sid" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15810.173125325015!2d112.0008265!3d-7.8380643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78574b2d30520f%3A0x61ec4e01ff56dbfd!2sCV.%20SS%20JAYA%20GRUP!5e0!3m2!1sid!2sid!4v1675083535880!5m2!1sid!2sid" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </li>
         </ul>
     </div>

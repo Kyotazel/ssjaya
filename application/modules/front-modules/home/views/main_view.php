@@ -11,6 +11,19 @@
         flex-grow: 0;
     }
 
+    .news_list-item_wrapper {
+        -webkit-box-shadow: 0 0 15px rgb(37 143 103 / 10%);
+        box-shadow: 0 0 15px rgb(37 143 103 / 10%);
+        border-radius: 16px;
+        overflow: hidden;
+        height: 100%;
+        -webkit-transition: .3s ease-in-out;
+        -o-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+        background: #fff;
+        padding: 12px;
+    }
+
     .btn_view_more {
         color: #214842;
         font-weight: bold;
@@ -32,49 +45,73 @@
         border-radius: 999em 40px 40px 999em;
     }
 
-    .thumbnails {
-        display: flex;
-        margin: 1rem auto 0;
-        padding: 0;
-        justify-content: center;
-    }
-
-    .thumbnail {
-        width: 70px;
-        height: 70px;
-        overflow: hidden;
-        list-style: none;
-        margin: 0 0.2rem;
-        cursor: pointer;
-    }
-
-    .thumbnail img {
+    #thumbnail-carousel-product .splide__slide img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        margin: auto;
+    }
+
+    #thumbnail-carousel-product .splide__arrow--prev,
+    #thumbnail-carousel-product .splide__arrow--next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+        width: 100px;
+        overflow: hidden;
+    }
+
+    #thumbnail-carousel-product .splide__arrow--prev {
+        left: -100px;
+        border-radius: 50% 0 0 50%;
+    }
+
+    #thumbnail-carousel-product .splide__arrow--next {
+        right: -100px;
+        border-radius: 0 50% 50% 0;
+    }
+
+    #thumbnail-carousel-product .splide__slide {
+        filter: brightness(0.9);
+        background-color: white;
+        border: 1px solid lightgrey;
+    }
+
+    #thumbnail-carousel-product .splide__slide.is-active {
+        filter: brightness(1);
+    }
+
+
+    @media (max-width: 768px) {
+        #thumbnail-carousel-product {
+            display: none;
+        }
+
+        .testimoni_product {
+            display: none;
+        }
+
+        .testimoni_person img {
+            width: 50%;
+            height: auto;
+            margin: auto;
+        }
     }
 </style>
 
 <section class="carousel">
-    <div class="slideshow-container fadeee">
-
-        <?php foreach($carousel as $value) : ?>
-            <div class="Containers">
-            <img src="<?= base_url() ?>assets/images/uploads/<?= $value->photo ?>" style="width:100%">
+    <section id="my-carousel" class="splide" aria-label="My Carousel Image">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <?php foreach ($carousel as $value) : ?>
+                    <li class="splide__slide" data-splide-interval="3000">
+                        <img src="<?= base_url() ?>assets/images/uploads/<?= $value->photo ?>" style="width:100%;">
+                    </li>
+                <?php endforeach ?>
+            </ul>
         </div>
-        <?php endforeach ?>
-
-        <!-- Back and forward buttons -->
-        <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="forward" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-
-    <!-- The circles/dots -->
-    <div style="text-align:center">
-    <?php foreach($carousel as $key => $value) : ?>
-        <span class="dots" onclick="currentSlide(<?= $key + 1 ?>)"></span>
-    <?php endforeach ?>
-    </div>
+    </section>
 </section>
 
 <section class="myproducts" style="margin-bottom: 40px;">
@@ -87,91 +124,56 @@
                 <section id="main-carousel" class="splide my-4" aria-label="My Awesome Gallery">
                     <div class="splide__track">
                         <ul class="splide__list">
-                            <li class="splide__slide" data-splide-interval="3000">
-                                <div class="product_title" style="text-align: center;">
-                                    <h3 style="color: black;">Gokoles</h3>
-                                    <div class="row mt-4">
-                                        <div class="col-md-5">
-                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
-                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
-                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                            <?php foreach ($produk as $value) : ?>
+                                <?php
+                                $preview = '';
+                                $jumlah_huruf = strlen($value->deskripsi);
+                                if ($jumlah_huruf != 0) {
+                                    $preview = substr(strip_tags($value->deskripsi), 0, 100) . "...";
+                                }
+                                ?>
+                                <li class="splide__slide" data-splide-interval="3000">
+                                    <div class="product_title" style="text-align: center;">
+                                        <h3 style="color: black;"><?= $value->nama ?></h3>
+                                        <div class="row mt-4">
+                                            <div class="col-md-5">
+                                                <img src="<?= base_url() ?>assets/images/uploads/<?= $value->filename ?>" alt="<?= $value->nama ?>" style="width: 200px; margin:auto">
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
+                                                    <h5 style="color: black;"><?= $preview ?></h5>
+                                                    <a href="<?= base_url('product/detail/' . $value->url) ?>" class="btn" style="margin-top: 40px;">Selengkapnya</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide" data-splide-interval="3000">
-                                <div class="product_title" style="text-align: center;">
-                                    <h3 style="color: black;">Gokoles</h3>
-                                    <div class="row mt-4">
-                                        <div class="col-md-5">
-                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
-                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
-                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide" data-splide-interval="3000">
-                                <div class="product_title" style="text-align: center;">
-                                    <h3 style="color: black;">Gokoles</h3>
-                                    <div class="row mt-4">
-                                        <div class="col-md-5">
-                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
-                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
-                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide" data-splide-interval="3000">
-                                <div class="product_title" style="text-align: center;">
-                                    <h3 style="color: black;">Gokoles</h3>
-                                    <div class="row mt-4">
-                                        <div class="col-md-5">
-                                            <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles" style="width: 200px; margin:auto">
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="content_product" style="margin: auto;margin-top: 40px; max-width: 80%;">
-                                                <h4 style="color: black;">“Minuman teh herbal yang berkhasiat untuk membantu memlihara kesehatan mata.”</h4>
-                                                <a href="#" class="btn" style="margin-top: 40px;">Selengkapnya</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            <?php endforeach ?>
                         </ul>
                     </div>
                 </section>
 
-                <ul id="thumbnails" class="thumbnails">
-                    <li class="thumbnail">
-                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
-                    </li>
-                    <li class="thumbnail">
-                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
-                    </li>
-                    <li class="thumbnail">
-                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
-                    </li>
-                    <li class="thumbnail">
-                        <img src="<?= base_url() ?>assets/images/product/gokoles.png" alt="Gokoles">
-                    </li>
-                </ul>
+                <div style="max-width: 700px; margin: auto">
+                    <section id="thumbnail-carousel-product" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <?php foreach ($produk as $value) : ?>
+                                    <?php
+                                    $photo = $value->filename;
+                                    if ($value->merk_photo) {
+                                        $photo = $value->merk_photo;
+                                    }
+                                    ?>
+                                    <li class="splide__slide">
+                                        <img src="<?= base_url() ?>assets/images/uploads/<?= $photo ?>" alt="<?= $value->nama ?>" style="width: 100px;">
+                                    </li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -186,18 +188,18 @@
             <section id="testimoni-carounsel" class="splide my-4" aria-label="My Awesome Gallery">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php foreach($testimoni as $value) : ?>
-                        <li class="splide__slide" data-splide-interval="3000">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->foto ?>" alt="<?= $value->nama ?>" style="border-radius: 50%;" />
+                        <?php foreach ($testimoni as $value) : ?>
+                            <li class="splide__slide" data-splide-interval="3000">
+                                <div class="row">
+                                    <div class="col-md-2 testimoni_person">
+                                        <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->foto ?>" alt="<?= $value->nama ?>" style="border-radius: 50%;" />
+                                    </div>
+                                    <div class="col-md-8 testimoni_comment" style="color: white; margin-top:8vh;"><?= $value->komentar ?></div>
+                                    <div class="col-md-2 testimoni_product">
+                                        <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->filename ?>" alt="<?= $value->product_name ?>" />
+                                    </div>
                                 </div>
-                                <div class="col-8" style="color: white; margin-top:8vh;"><?= $value->komentar ?></div>
-                                <div class="col-2">
-                                    <img class="lazy preview" src="<?= base_url() ?>assets/images/uploads/<?= $value->filename ?>" alt="<?= $value->product_name ?>" />
-                                </div>
-                            </div>
-                        </li>
+                            </li>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -213,75 +215,40 @@
     <div class="container d-lg-flex justify-content-between">
         <div class="">
             <ul class="news_list d-flex flex-wrap">
-                <li class="news_list-item col-md-4">
-                    <div class="news_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
-                            <p class="category_article">Kategori 1</p>
-                        </div>
-                        <div class="main d-flex flex-column justify-content-between">
-                            <div class="main_metadata">
-                                <span class="main_metadata-item">
-                                    <i class="icon-calendar_day icon"></i>
-                                    September 30, 2021
-                                </span>
+                <?php foreach ($article as $value) : ?>
+                    <?php
+                    $preview_article = '';
+                    $jumlah_huruf = strlen($value->konten);
+                    if ($jumlah_huruf != 0) {
+                        $preview_article = (substr(strip_tags($value->konten), 0, 150)) . "...";
+                    }
+                    ?>
+                    <li class="news_list-item col-md-4">
+                        <div class="news_list-item_wrapper d-flex flex-column">
+                            <div class="media">
+                                <img class="lazy article_image" src="<?= base_url() ?>assets/images/uploads/<?= $value->img ?>" style="height: 250px;" alt="<?= $value->judul ?>" />
+                                <p class="category_article" style="background-color: <?= $value->category_color ?>;"><?= $value->category_name ?></p>
                             </div>
-                            <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
-                            <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
-                        </div>
-                        <div class="view_more" style="margin-top: 20px;">
-                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="news_list-item col-md-4">
-                    <div class="news_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
-                            <p class="category_article" style="background-color: green;">Kategori 2</p>
-
-                        </div>
-                        <div class="main d-flex flex-column justify-content-between">
-                            <div class="main_metadata">
-                                <span class="main_metadata-item">
-                                    <i class="icon-calendar_day icon"></i>
-                                    September 30, 2021
-                                </span>
+                            <div class="main d-flex flex-column justify-content-between">
+                                <div class="main_metadata">
+                                    <span class="main_metadata-item">
+                                        <i class="icon-calendar_day icon"></i>
+                                        <?= Modules::run('helper/date_indo', date('Y-m-d', strtotime($value->tgl)), '-') ?>
+                                    </span>
+                                </div>
+                                <a class="main_title" href="<?= base_url('article/detail/' . $value->url) ?>" target="_blank" rel="noopener norefferer"><?= $value->judul ?></a>
+                                <p class="main_preview"><?= $preview_article ?></p>
                             </div>
-                            <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
-                            <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
-                        </div>
-                        <div class="view_more" style="margin-top: 20px;">
-                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="news_list-item col-md-4">
-                    <div class="news_list-item_wrapper d-flex flex-column">
-                        <div class="media">
-                            <img class="lazy article_image" src="<?= base_url() ?>assets/images/example/diare.png" alt="post" />
-                            <p class="category_article" style="background-color: purple;">Kategori 3</p>
-
-                        </div>
-                        <div class="main d-flex flex-column justify-content-between">
-                            <div class="main_metadata">
-                                <span class="main_metadata-item">
-                                    <i class="icon-calendar_day icon"></i>
-                                    September 30, 2021
-                                </span>
+                            <div class="view_more" style="margin-top: 20px;">
+                                <a class="btn_view_more" href="<?= base_url('article/detail/' . $value->url) ?>">Baca Selengkapnya</a>
                             </div>
-                            <a class="main_title" href="post.html" target="_blank" rel="noopener norefferer">Edukasi Tentang Diare</a>
-                            <p class="main_preview">Sejarah Penamaan Penyakit Diare berasal dari Bahasa Inggris diarrhea yang berarti sebuah penyakit yang membuat</p>
                         </div>
-                        <div class="view_more" style="margin-top: 20px;">
-                            <a class="btn_view_more" href="#">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                <?php endforeach ?>
             </ul>
         </div>
     </div>
     <div style="text-align: center;">
-        <a class="btn btn--green">Lihat Semua Artikel</a>
+        <a class="btn btn--green" href="<?= base_url('article') ?>">Lihat Semua Artikel</a>
     </div>
 </section>

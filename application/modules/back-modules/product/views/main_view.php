@@ -24,7 +24,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Foto</th>
+                        <th>Gambar</th>
+                        <th>Merk</th>
                         <th>Harga</th>
                         <th class="text-wrap">Komposisi & Sertifikasi</th>
                         <th class="text-center">Action</th>

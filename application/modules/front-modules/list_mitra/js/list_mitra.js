@@ -8,6 +8,18 @@ var testimoni = new Splide("#list-carousel", {
       col: "1.5rem",
     },
   },
+  breakpoints: {
+    767: {
+      grid: {
+        rows: 2,
+        cols: 1,
+        gap: {
+          row: "1rem",
+          col: "1.5rem",
+        },
+      },
+    }
+ }
 });
 testimoni.mount(window.splide.Extensions);
 

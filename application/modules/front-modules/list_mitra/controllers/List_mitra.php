@@ -55,12 +55,12 @@ class List_mitra extends BackendController
             $html .= '<ul class="splide__list">';
             foreach($get_data as $value) {
                 $html .= "<li class='splide__slide'>
-                <div class='products_list-item_wrapper d-flex flex-column'>
+                <div class='mitra_list d-flex flex-column'>
                     <div class='main d-flex flex-column justify-content-between'>
-                        <h4 class='main_title'>$value->nama_apotek</h4>
-                        <p style='margin-bottom: 12px; text-align: center'>$value->alamat.</p>
-                        <p style='text-align: left;'><b>Produk</b> : $value->produk</p>
-                        <p style='text-align: left;'><b>Sales</b> : $value->nama_sales</p>
+                        <h4 class='main_title'>" . strtoupper($value->nama_apotek) . "</h4>
+                        <p style='text-align: center; font-style: italic; font-size: 18px'>$value->alamat.</p><br>
+                        <p style='text-align: left; font-size: 16px; font-style: italic; color: black'><b>Produk</b> : </p>
+                        <p style='text-align: left; font-size: 15px: font-style: italic'>$value->produk</p>
                     </div>
                 </div>
             </li>";

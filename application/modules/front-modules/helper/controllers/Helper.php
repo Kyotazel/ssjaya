@@ -26,4 +26,31 @@ class Helper extends BackendController
         $url = base_url($prefix_page . $query_url);
         return $url;
     }
+
+    public function date_indo($date, $delimiter)
+    {
+        $array_month = [
+            '01' => 'januari', '02' => 'februari', '03' => 'maret', '04' => 'april', '05' => 'mei', '06' => 'juni', '07' => 'juli', '08' => 'agustus', '09' => 'september', '10' => 'oktober', '11' => 'november', '12' => 'december'
+        ];
+        $explode_date = explode($delimiter, $date);
+        $date_return = $explode_date[2] . ' ' . ucfirst($array_month[$explode_date[1]]) . ' ' . $explode_date[0];
+        return $date_return;
+    }
+
+    public function datetime_indo($datetime)
+    {
+        $explode_datetime = explode(' ', $datetime);
+        $time = $explode_datetime[1];
+        $date = $explode_datetime[0];
+
+        $array_month = [
+            '01' => 'januari', '02' => 'februari', '03' => 'maret', '04' => 'april', '05' => 'mei', '06' => 'juni', '07' => 'juli', '08' => 'agustus', '09' => 'september', '10' => 'oktober', '11' => 'november', '12' => 'december'
+        ];
+        $explode_date = explode('-', $date);
+        $date_return = $explode_date[2] . ' ' . ucfirst($array_month[$explode_date[1]]) . ' ' . $explode_date[0];
+
+        $explode_time = explode(':', $time);
+        $date_return .= '&nbsp;&nbsp; ' . $explode_time[0] . ':' . $explode_time[1];
+        return $date_return;
+    }
 }

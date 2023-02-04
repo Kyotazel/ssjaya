@@ -223,7 +223,6 @@ class Article extends BackendController
         $konten = $_POST['konten'];
 
         $array_update = [
-            'tgl' => date('Y-m-d H:i:s'),
             'judul' => $judul,
             'konten' => $konten,
             'id_category' => $id_category,

@@ -1,4 +1,14 @@
 <style>
+
+    @font-face {
+        font-family: "gotham-black";
+        src: url(<?= base_url('assets/images/font/Gotham-Black-Regular.ttf') ?>);
+    }
+
+    @font-face {
+        font-family: "lato";
+        src: url(<?= base_url('assets/images/font/Lato-Regular.ttf') ?>);
+    }
     .mybutton {
         background-color: #efc368;
         display: block;
@@ -15,7 +25,30 @@
         padding: 4px;
         border-radius: 10px;
         margin-top: 16px;
+        background-color: white;
     }
+    .mitra_list {
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        
+    }
+
+    .mitra_list h4 {
+        font-family: "gotham-black";
+        font-size: 20px;
+        color: black;
+    }
+
+    .mitra_list p {
+        font-family: "lato";
+    }
+
+    @media (max-width: 768px) {
+   .splide__slide {
+      width: 100%;
+   }
+}
 </style>
 
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"> -->

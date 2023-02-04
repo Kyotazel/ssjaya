@@ -25,12 +25,23 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="image">Gambar</label>
+                        <label for="image">Gambar Produk</label>
                         <?php if(isset($data_detail)) : ?>
                             <img src="<?= base_url('assets/images/uploads/'.$data_detail->img) ?>" class="for_update" alt="" style="display: none; height: 200px">
                             <p class="text-danger for_update" style="display: none;">*) Apabila tidak diubah maka jangan upload foto</p>
                         <?php endif ?>
                         <input type="file" name="image" class="form-control">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="merk">Merk Produk</label>
+                        <?php if(isset($data_detail)) : ?>
+                            <img src="<?= base_url('assets/images/uploads/'.$data_detail->merk_photo) ?>" class="for_update" alt="" style="display: none; height: 200px">
+                            <p class="text-danger for_update" style="display: none;">*) Apabila tidak diubah maka jangan upload foto</p>
+                        <?php endif ?>
+                        <input type="file" name="merk" class="form-control">
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>

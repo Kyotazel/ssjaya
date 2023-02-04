@@ -30,6 +30,10 @@
         var _token_user = '<?= urlencode($this->encryption->encrypt($this->session->userdata('us_token_login'))) ?>'
     </script>
     <style>
+        .header_nav {
+            width: 70%;
+        }
+
         .header_button {
             background-color: #efc368;
             display: block;
@@ -65,17 +69,46 @@
             transform-origin: right;
             transform: scaleX(0);
             transition: transform .3s ease-in-out;
-            }
+        }
 
         .nav-link:hover::before {
             transform-origin: left;
             transform: scaleX(1);
+        }
+
+        .jadi_mitra_kami {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header_nav {
+                width: 100%;
             }
+
+            .header_trigger {
+                order: 4;
+            }
+
+            .header_button {
+                display: none;
+            }
+
+            .header_logo span:not(.logo) {
+                display: block;
+            }
+
+            .jadi_mitra_kami {
+                display: block;
+            }
+            .jadi_mitra_kami .header_button{
+                display: block;
+            }
+        }
     </style>
 </head>
 
-<body>
-    <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true" style="height: 100px;">
+<body style="background-color: #f2f3f8;">
+    <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
         <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
             <a class="brand header_logo d-flex align-items-center" href="index.html">
                 <span class="logo">
@@ -84,7 +117,7 @@
                 <span class="accent">SS</span>
                 <span>JAYA</span>
             </a>
-            <nav class="header_nav" style="width: 70%;">
+            <nav class="header_nav">
                 <ul class="header_nav-list">
                     <li class="header_nav-list_item">
                         <a class="nav-link d-inline-flex align-items-center" href="<?= base_url() ?>">
@@ -111,12 +144,15 @@
                             Konsultasi
                         </a>
                     </li>
+                    <li class="header_nav-list_item jadi_mitra_kami">
+                    <a href="https://seller.ssjaya.com" class="header_button">Jadi Mitra Kami <i class="fas fa-hand-holding-heart"></i></a>
+                    </li>
                 </ul>
             </nav>
             <span class="header_trigger d-inline-flex d-xl-none flex-column justify-content-between">
-                <span class="line line--short"></span>
                 <span class="line line"></span>
-                <span class="line line--short"></span>
+                <span class="line line"></span>
+                <span class="line line"></span>
                 <span class="line line"></span>
             </span>
             <div class="header_user d-flex justify-content-end align-items-center">
@@ -128,37 +164,39 @@
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="main-content" style="min-height: 600px; margin-top: 100px">
+    <div class="main-content" style="min-height: 600px; margin-top: 100px;">
         <?php $this->load->view("$module_directory/$view_file"); ?>
     </div>
 
     <footer class="footer">
         <div class="footer_main section" style="padding-bottom: 40px; padding-top: 40px;">
-            <div class="row mb-5">
-                <div class="col-md-6" style="padding-left: 40px;">
-                    <h4 style="color: white;">Follow Us</h4>
-                </div>
-                <div class="col-md-6">
-                    <ul class="social s  d-flex align-items-center accent" style="float: right; padding-right: 40px">
-                        <li class="list-item" style="padding-right: 20px;">
-                            <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                                <i class="icon-facebook icon"></i>
-                            </a>
-                        </li>
-                        <li class="list-item" style="padding-right: 20px;">
-                            <a class="link" href="https://instagram.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
-                                <i class="icon-instagram icon"></i>
-                            </a>
-                        </li>
-                        <li class="list-item" style="padding-right: 20px;">
-                            <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
-                                <i class="icon-mail icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-12" style="padding: 2%;">
-                    <hr>
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <h4 style="color: white;">Follow Us</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social s  d-flex align-items-center accent" style="float: right">
+                            <li class="list-item" style="padding-right: 20px;">
+                                <a class="link" href="https://www.facebook.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
+                                    <i class="icon-facebook icon"></i>
+                                </a>
+                            </li>
+                            <li class="list-item" style="padding-right: 20px;">
+                                <a class="link" href="https://instagram.com/ssjayaherbal" target="_blank" rel="noopener norefferer">
+                                    <i class="icon-instagram icon"></i>
+                                </a>
+                            </li>
+                            <li class="list-item" style="padding-right: 20px;">
+                                <a class="link" href="mailto:admin@ssjaya.com" target="_blank" rel="noopener norefferer">
+                                    <i class="icon-mail icon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12" style="padding-top: 32px;">
+                        <hr>
+                    </div>
                 </div>
             </div>
             <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
@@ -173,11 +211,12 @@
                     <div class="footer_main-about_wrapper">
                         <b>Kantor Marketing</b>
                         <p class="text">
-                            Perum Mutiara Jayabaya Blok C 17, Kec. Mojoroto, Kota Kediri, Jawa Timur.
+                            Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
+
                         </p>
                         <b>Warehouse</b>
                         <p class="text">
-                            Jalan. Sersan Suharmaji Gang 2, Kel. Manisrenggo Kec. Kota, Kota Kediri, Jawa Timur.
+                            Perum Mutiara Jayabaya Blok C 17, Kec. Mojoroto, Kota Kediri, Jawa Timur.
                         </p>
 
                     </div>
@@ -237,8 +276,8 @@
                                 <i class="icon-clock"></i>
                             </span>
                             <div class="wrapper d-flex flex-column">
-                                <span>09.00 – 17.00 WIB</span>
-                                <span>Senin - Jumat</span>
+                                <span>08.00 – 16.00 WIB</span>
+                                <span>Senin - Sabtu</span>
                             </div>
                         </li>
                         <li class="list-item d-flex align-items-center">
@@ -311,6 +350,9 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div style="text-align: center;">
+                @ 2023 Copyright: <a href="<?= base_url() ?>" style="color: #efc368">ssjaya.com</a>
             </div>
         </div>
 

@@ -34,11 +34,27 @@ class Home extends BackendController
             "where" => 'a.status = 1'
         ];
 
-        // $array_artikel = [
+        $array_produk = [
+            "select" => "a.*, b.nama as filename",
+            "from" => "blw_produk a",
+            "join" => [
+                "blw_upload b, a.id = b.idproduk, left"
+            ]
+        ];
 
-        // ]
+        $array_article = [
+            "select" => "a.*, b.name as category_name, b.color as category_color",
+            "from" => "blw_blog a",
+            "join" => [
+                "blw_blog_category b, a.id_category = b.id"
+            ],
+            "order_by" => "a.tgl, DESC",
+            "limit" => 3
+        ];
 
         $this->app_data['testimoni']    = Modules::run('database/get', $array_testimoni)->result();
+        $this->app_data['produk']       = Modules::run('database/get', $array_produk)->result();
+        $this->app_data['article']      = Modules::run('database/get', $array_article)->result();
         $this->app_data['carousel']     = Modules::run('database/find', 'carousel', ['status' => 1])->result();
         $this->app_data['page_title']   = 'Beranda';
         $this->app_data['view_file']    = 'main_view';

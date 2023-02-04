@@ -53,6 +53,7 @@ class Product extends BackendController
                 $row[] = $no;
                 $row[] = $value->nama;
                 $row[] = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->filename . "'><img src='" . base_url('assets/images/uploads/') . $value->filename . "' style='height: 100px; width: auto' /></a>";
+                $row[] = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->merk_photo . "'><img src='" . base_url('assets/images/uploads/') . $value->merk_photo . "' style='height: 100px; width: auto' /></a>";
                 $row[] = "Rp. " . number_format($value->harga);
                 $row[] = "<a class='btn btn-primary text-light mb-1' href='" . base_url('admin/product/komposisi/index/' . $value->url) . "'>Komposisi</a><br><a class='btn btn-primary text-light' href='" . base_url('admin/product/sertifikasi/index/' . $value->url) . "'>Sertifikasi</a>";
                 $row[] = "<div class='dropdown'>
@@ -115,7 +116,7 @@ class Product extends BackendController
         ];
 
         $this->app_data['detail']       = Modules::run('database/get', $array_query)->row();
-        $this->app_data['page_title']   = 'Detail Artikel';
+        $this->app_data['page_title']   = 'Detail Produk';
         $this->app_data['view_file']    = 'view_detail';
         echo Modules::run('template/main_layout', $this->app_data);
     }
@@ -186,6 +187,7 @@ class Product extends BackendController
         $harga      = $this->input->post('harga');
         $aturan     = $this->input->post('aturan');
         $foto       = $this->upload_image();
+        $merk_photo = $this->upload_image_merk();
         $url        = str_replace(' ', '-', $nama) . "-" . time();
         $deskripsi  = $_POST['deskripsi'];
         $manfaat    = $_POST['manfaat'];
@@ -198,6 +200,7 @@ class Product extends BackendController
             'deskripsi' => $deskripsi,
             'aturan' => $aturan,
             'manfaat' => $manfaat,
+            'merk_photo' => $merk_photo,
         ];
 
         Modules::run('database/insert', 'blw_produk', $array_insert);
@@ -235,6 +238,13 @@ class Product extends BackendController
             'aturan' => $aturan,
             'manfaat' => $manfaat,
         ];
+
+        $merk_photo = $this->upload_image_merk('update');
+
+        if($merk_photo != '') {
+            $merk_photo = ["merk_photo" => $merk_photo];
+            $array_update = array_merge($array_update, $merk_photo);
+        }
 
         Modules::run('database/update', 'blw_produk', ['id' => $id], $array_update);
 
@@ -278,5 +288,20 @@ class Product extends BackendController
                 return $image_name;
             }
         }
+    }
+    private function upload_image_merk($method = 'save')
+    {
+        $config['upload_path']          = realpath(APPPATH . '../assets/images/uploads');
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['file_name']            = round(microtime(true) * 1000); //just milisecond timestamp fot unique name
+        $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('merk')) //upload and validate
+            {
+                return '';
+            } else {
+                $upload_data = $this->upload->data();
+                $image_name = $upload_data['file_name'];
+                return $image_name;
+            }
     }
 }
