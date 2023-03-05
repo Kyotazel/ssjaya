@@ -26,3 +26,8 @@ function notif_error(message) {
         timer: 1500
       })
 }
+
+$('.select2').select2({
+    placeholder: "Pilih...",
+    allowClear: true
+});

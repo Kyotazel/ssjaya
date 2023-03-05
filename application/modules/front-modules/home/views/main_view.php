@@ -42,7 +42,7 @@
         color: white;
         padding: 8px;
         font-weight: bolder;
-        border-radius: 999em 40px 40px 999em;
+        border-radius: 999em 999em 999em 999em;
     }
 
     #thumbnail-carousel-product .splide__slide img {
@@ -82,6 +82,33 @@
         filter: brightness(1);
     }
 
+    .menu_home {
+        display: none;
+    }
+
+    .box_menu_item {
+        background-color: #214842;
+        width: 160px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-bottom: 20px;
+        border-radius: 20%;
+    }
+
+    .list_menu_item {
+        width: 100px;
+        height: 100px;
+        background-color: #375a54;
+        border-radius: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0.9;
+    }
 
     @media (max-width: 768px) {
         #thumbnail-carousel-product {
@@ -96,6 +123,10 @@
             width: 50%;
             height: auto;
             margin: auto;
+        }
+
+        .menu_home {
+            display: block;
         }
     }
 </style>
@@ -112,6 +143,52 @@
             </ul>
         </div>
     </section>
+</section>
+
+<section class="menu_home">
+    <div class="featured" style="padding-top: 60px;">
+        <div class="container">
+            <div class="featured_header">
+                <h2 class="featured_header-title">Menu</h2>
+            </div>
+            <div class="box_menu_list">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="<?= base_url('product') ?>" class="box_menu_item">
+                            <div class="list_menu_item">
+                                <img src="<?= base_url('assets/images/logo/produk.svg') ?>" alt="" style="height: 40px; width: auto; margin-bottom: 8px">
+                                <span style="color: white; text-align:center; font-size: 12px;">Produk</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="<?= base_url('list-mitra') ?>" class="box_menu_item">
+                            <div class="list_menu_item">
+                                <img src="<?= base_url('assets/images/logo/mitra.svg') ?>" alt="" style="height: 40px; width: auto; margin-bottom: 8px">
+                                <span style="color: white; text-align:center; font-size: 12px">Mitra Apotek</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="<?= base_url('about-us') ?>" class="box_menu_item">
+                            <div class="list_menu_item">
+                                <img src="<?= base_url('assets/images/logo/about-us.svg') ?>" alt="" style="height: 40px; width: auto; margin-bottom: 8px">
+                                <span style="color: white; text-align:center; font-size: 12px">Tentang Kami</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="<?= base_url('consultation') ?>" class="box_menu_item">
+                            <div class="list_menu_item">
+                                <img src="<?= base_url('assets/images/logo/konsultasi.svg') ?>" alt="" style="height: 40px; width: auto; margin-bottom: 8px">
+                                <span style="color: white; text-align:center; font-size: 12px">Konsultasi</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="myproducts" style="margin-bottom: 40px;">
@@ -248,7 +325,7 @@
             </ul>
         </div>
     </div>
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 20px">
         <a class="btn btn--green" href="<?= base_url('article') ?>">Lihat Semua Artikel</a>
     </div>
 </section>

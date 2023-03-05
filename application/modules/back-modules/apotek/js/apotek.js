@@ -1,7 +1,9 @@
 var url_controller = baseUrl + '/' + prefix_folder + '/' + _controller + '/';
-var table, save_method, id_use;
+var table = $("#table-data").DataTable({});
+var save_method, id_use;
 
 $(document).ready(function () {
+    table.destroy();
     table = $("#table-data").DataTable({
         "ajax": {
             "url": url_controller + "list_data",
@@ -96,6 +98,8 @@ function add() {
     $('.invalid-feedback').empty();
     $('.invalid-feedback').removeClass('d-block');
     $('.form-control').removeClass('is-invalid');
+    select2 = $('.select2');
+    select2.val(null).trigger('change');
     $('#modal_form').modal('show');
 }
 
@@ -157,16 +161,56 @@ $(document).on('click', '.btn_edit', function () {
         data: {id: id_use},
         success: function (data) {
             if (data.status) {
+
+                produk = data.data.produk;
+                arr_prod = produk.split(", ")
+
+                mySelect = document.getElementById("product");
+                select2 = $(".select2")
+                select2.val(null).trigger('change');
+
+                mySelect.querySelectorAll('option').forEach(option => {
+                    if (arr_prod.indexOf(option.value) > -1) {
+                      option.selected = true;
+                    }
+                  });
+                  
+                select2.trigger('change');
+
                 $('[name="nama_apotek"]').val(data.data.nama_apotek);
                 $('[name="id_sales"]').val(data.data.id_sales);
                 $('[name="kota"]').val(data.data.kota);
                 $('[name="alamat"]').val(data.data.alamat);
-                $('[name="produk"]').val(data.data.produk);
                 $('#modal_form').modal('show');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             notif_error(textStatus);
         }
+    })
+})
+
+$("#filter_submit").click(function(e) {
+    e.preventDefault();
+    filter_city = $("#filter_city").val();    
+    filter_sales = $("#filter_sales").val();    
+    filter_product = $("#filter_product").val();    
+    table.destroy();
+    table = $("#table-data").DataTable({
+        "ajax": {
+            "url": url_controller + "list_data",
+            "data": {filter_city: filter_city, filter_sales: filter_sales, filter_product: filter_product},
+            "type": "POST"
+        },
+        "columnDefs": [
+            {
+                "targets": [6],
+                "class": "text-center"
+            },
+            {
+                "targets": [2,5],
+                "class": "text-wrap",
+            }
+        ],
     })
 })

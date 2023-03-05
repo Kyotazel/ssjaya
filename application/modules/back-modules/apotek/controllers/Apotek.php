@@ -24,7 +24,14 @@ class Apotek extends BackendController
 
     public function index()
     {
+        $array_city = [
+            'select' => 'DISTINCT(kota)',
+            'from' => 'sales_apotek',
+            'order_by' => 'kota'
+        ];
+        $this->app_data['list_city'] = Modules::run('database/get', $array_city)->result();
         $this->app_data['list_sales']   = Modules::run('database/get_all', 'sales_user')->result();
+        $this->app_data['list_product'] = Modules::run('database/get_all', 'blw_produk')->result();
         $this->app_data['page_title']   = 'Apotek';
         $this->app_data['view_file']    = 'main_view';
         echo Modules::run('template/main_layout', $this->app_data);
@@ -33,14 +40,31 @@ class Apotek extends BackendController
     public function list_data()
     {
         $id = $this->input->post('id');
+        $city = $this->input->post('filter_city');
+        $sales = $this->input->post('filter_sales');
+        $product = $this->input->post('filter_product');
         if (!$id) {
-            $array_get = [
+            $array_first = [
                 "select" => "a.*, b.nama as nama_sales",
                 "from" => "sales_apotek a",
                 "join" => [
                     "sales_user b, a.id_sales = b.id_sales, left"
-                ],
+                ]
             ];
+
+            $where = "a.id_sales = a.id_sales";
+            if($sales) {
+                $where = "a.id_sales = '$sales'";
+            }
+            if($city) {
+                $where .= " AND kota = '$city'";
+            }
+            if($product) {
+                $where .= " AND produk LIKE '%$product%'";
+            }
+
+            $array_get = array_merge_recursive($array_first, ['where' => $where]);
+
             $get_all = Modules::run('database/get', $array_get)->result();
 
             $no = 0;
@@ -95,7 +119,7 @@ class Apotek extends BackendController
         echo json_encode(['status' => true]);
     }
 
-    private function validate() {
+    private function validate($method = 'save') {
         $data = array();
         $data['error_string'] = array();
         $data['inputerror'] = array();
@@ -121,9 +145,9 @@ class Apotek extends BackendController
             $data['inputerror'][] = 'alamat';
             $data['status'] = FALSE;
         }
-        if ($this->input->post('produk') == '') {
+        if (($this->input->post('product[]') == '') && ($method == 'save')) {
             $data['error_string'][] = 'Harus Diisi';
-            $data['inputerror'][] = 'produk';
+            $data['inputerror'][] = 'product[]';
             $data['status'] = FALSE;
         }
         if ($data['status'] == FALSE) {
@@ -139,14 +163,23 @@ class Apotek extends BackendController
         $id_sales           = $this->input->post('id_sales');
         $kota               = $this->input->post('kota');
         $alamat             = $this->input->post('alamat');
-        $produk             = $this->input->post('produk');
+
+        $count =  count($this->input->post('product'));
+        $products = '';
+        foreach($this->input->post('product') as $key => $product) {
+            if($count - 1 != $key) {
+                $products .= $product . ", ";
+            } else {
+                $products .= $product;
+            }
+        }
 
         $array_insert = [
             'nama_apotek' => $nama_apotek,
             'id_sales'  => $id_sales,
             'kota' => $kota,
             'alamat' => $alamat,
-            'produk' => $produk,
+            'produk' => $products,
         ];
 
         Modules::run('database/insert', 'sales_apotek', $array_insert);
@@ -156,20 +189,29 @@ class Apotek extends BackendController
 
     public function update()
     {
-        $this->validate();
+        $this->validate("update");
         $id = $this->encryption->decrypt($this->input->post('id'));
         $nama_apotek        = $this->input->post('nama_apotek');
         $id_sales           = $this->input->post('id_sales');
         $kota               = $this->input->post('kota');
         $alamat             = $this->input->post('alamat');
-        $produk             = $this->input->post('produk');
+        
+        $count =  count($this->input->post('product'));
+        $products = '';
+        foreach($this->input->post('product') as $key => $product) {
+            if($count - 1 != $key) {
+                $products .= $product . ", ";
+            } else {
+                $products .= $product;
+            }
+        }
 
         $array_update = [
             'nama_apotek' => $nama_apotek,
             'id_sales'  => $id_sales,
             'kota' => $kota,
             'alamat' => $alamat,
-            'produk' => $produk,
+            'produk' => $products,
         ];
 
         Modules::run('database/update', 'sales_apotek', ['id_apotek' => $id], $array_update);

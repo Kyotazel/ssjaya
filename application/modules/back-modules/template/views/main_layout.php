@@ -13,6 +13,7 @@
     <title>ADMIN - <?= $page_title ?></title>
     <!-- This page css -->
     <!-- Custom CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="<?= base_url() ?>assets/themes/admin/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/themes/admin/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/themes/velzon/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -26,6 +27,9 @@
 <style>
 .ck-editor__editable_inline {
     min-height: 400px;
+}
+.select2-container {
+    display: block;
 }
 </style>
 
@@ -199,6 +203,7 @@
     <script src="<?= base_url() ?>assets/themes/velzon/libs/feather-icons/feather.min.js"></script>
     <!-- Sweet Alerts js -->
     <script src="<?= base_url() ?>assets/themes/velzon/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- CKEditor -->
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
     <!--Custom JavaScript -->

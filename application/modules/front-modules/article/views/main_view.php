@@ -34,7 +34,7 @@
         color: white;
         padding: 8px;
         font-weight: bolder;
-        border-radius: 999em 40px 40px 999em;
+        border-radius: 999em 999em 999em 999em;
     }
 </style>
 <section class="artikel" style="margin-bottom: 40px; padding-top:20px">

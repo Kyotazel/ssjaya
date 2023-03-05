@@ -16,7 +16,8 @@ var product = new Splide("#main-carousel", {
   arrows: false,
   breakpoints: {
     768: {
-      pagination: true
+      pagination: true,
+      arrows: true
     },
   },
 });

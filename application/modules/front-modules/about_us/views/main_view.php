@@ -4,6 +4,10 @@
         padding-top: 40px;
         padding-bottom: 40px;
     }
+
+    .header {
+        height: 100px;
+    }
 </style>
 <section class="features" style="padding-bottom: 40px; padding-top:20px">
     <div class="container">

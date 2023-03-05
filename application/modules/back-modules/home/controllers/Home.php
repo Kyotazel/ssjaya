@@ -24,9 +24,7 @@ class Home extends BackendController
 
     public function index()
     {
-        $this->app_data['page_title']   = 'Dashboard';
-        $this->app_data['view_file']    = 'main_view';
-        echo Modules::run('template/main_layout', $this->app_data);
+        redirect('admin/carousel');
     }
 
     public function not_found()

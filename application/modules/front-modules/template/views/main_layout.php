@@ -30,6 +30,9 @@
         var _token_user = '<?= urlencode($this->encryption->encrypt($this->session->userdata('us_token_login'))) ?>'
     </script>
     <style>
+        .header {
+            height: 100px;
+        }
         .header_nav {
             width: 70%;
         }
@@ -110,7 +113,7 @@
 <body style="background-color: #f2f3f8;">
     <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
         <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
-            <a class="brand header_logo d-flex align-items-center" href="index.html">
+            <a class="brand header_logo d-flex align-items-center" href="<?= base_url() ?>">
                 <span class="logo">
                     <img src="<?= base_url() ?>assets/images/logo/favicon.png" alt="logo" style="width: max-content;">
                 </span>
@@ -201,7 +204,7 @@
             </div>
             <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
                 <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
-                    <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
+                    <a class="brand footer_main-about_brand d-flex align-items-center" href="<?= base_url() ?>">
                         <span class="logo">
                             <img src="<?= base_url() ?>assets/images/logo/favicon.png" alt="logo" style="width: max-content;">
                         </span>

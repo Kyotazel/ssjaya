@@ -1,4 +1,52 @@
 <div class="card">
+    <div class="card-header">
+        <h4>Filter</h4>
+    </div>
+    <div class="card-body">
+        <form id="filter_form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="filter_city">Kota : </label>
+                        <select name="filter_city" id="filter_city" class="form-control">
+                            <option value="">Pilih Kota</option>
+                            <?php foreach ($list_city as $city) : ?>
+                                <option value="<?= $city->kota ?>"><?= $city->kota ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="filter_sales">Sales : </label>
+                        <select name="filter_sales" id="filter_sales" class="form-control">
+                            <option value="">Pilih Sales</option>
+                            <?php foreach ($list_sales as $sales) : ?>
+                                <option value="<?= $sales->id_sales ?>"><?= $sales->nama ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="filter_product">Produk : </label>
+                        <select name="filter_product" id="filter_product" class="form-control">
+                            <option value="">Pilih Produk</option>
+                            <?php foreach ($list_product as $product) : ?>
+                                <option value="<?= ucwords(strtolower($product->nama)) ?>"><?= $product->nama ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" id="filter_submit" class="btn btn-success" style="float: right;"><i class="fa fa-search"></i> Filter Data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
     <div class="card-header d-flex align-items-center">
         <div class="card-title mb-0 flex-grow-1">
             <div class="btn btn-primary">
@@ -50,7 +98,7 @@
                                 <label for="id_sales">Nama Sales</label>
                                 <select name="id_sales" id="id_sales" class="form-control">
                                     <option value="">Pilih Sales</option>
-                                    <?php foreach($list_sales as $sales) : ?>
+                                    <?php foreach ($list_sales as $sales) : ?>
                                         <option value="<?= $sales->id_sales ?>"><?= $sales->nama ?></option>
                                     <?php endforeach ?>
                                 </select>
@@ -74,7 +122,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="produk">Produk</label>
-                                <input type="text" name="produk" class="form-control" placeholder="List Produk">
+                                <select name="product[]" id="product" class="select2" multiple>
+                                    <?php foreach ($list_product as $product) : ?>
+                                        <option value="<?= ucwords(strtolower($product->nama)) ?>"><?= $product->nama ?></option>
+                                    <?php endforeach ?>
+                                </select>
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>

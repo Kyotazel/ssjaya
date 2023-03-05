@@ -48,12 +48,17 @@ class Product extends BackendController
             foreach ($get_all as $value) {
                 $id_encrypt = $this->encryption->encrypt($value->id);
 
+                $merk = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->filename . "'><img src='" . base_url('assets/images/uploads/') . $value->filename . "' style='height: 100px; width: auto' /></a>";
+                if($value->merk_photo) {
+                    $merk = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->merk_photo . "'><img src='" . base_url('assets/images/uploads/') . $value->merk_photo . "' style='height: 100px; width: auto' /></a>";
+                }
+
                 $no++;
                 $row = [];
                 $row[] = $no;
                 $row[] = $value->nama;
                 $row[] = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->filename . "'><img src='" . base_url('assets/images/uploads/') . $value->filename . "' style='height: 100px; width: auto' /></a>";
-                $row[] = "<a href='#' data-toggle='modal' data-target='#imageModal' data-title='$value->nama' data-img='" . base_url('assets/images/uploads/') . $value->merk_photo . "'><img src='" . base_url('assets/images/uploads/') . $value->merk_photo . "' style='height: 100px; width: auto' /></a>";
+                $row[] = $merk;
                 $row[] = "Rp. " . number_format($value->harga);
                 $row[] = "<a class='btn btn-primary text-light mb-1' href='" . base_url('admin/product/komposisi/index/' . $value->url) . "'>Komposisi</a><br><a class='btn btn-primary text-light' href='" . base_url('admin/product/sertifikasi/index/' . $value->url) . "'>Sertifikasi</a>";
                 $row[] = "<div class='dropdown'>

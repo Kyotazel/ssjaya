@@ -39,13 +39,18 @@ class List_mitra extends BackendController
         $city = $this->input->post('city');
         $apotek = $this->input->post('apotek');
 
+        $where = "nama_apotek LIKE '%$apotek%'";
+        if($city) {
+            $where = "kota = '$city' AND nama_apotek LIKE '%$apotek%'";
+        }
+
         $array_data = [
             'select' => "a.*, b.nama as nama_sales",
             "from" => "sales_apotek a",
             'join' => [
                 'sales_user b, a.id_sales = b.id_sales, left'
             ],
-            "where" => "kota = '$city' AND nama_apotek LIKE '%$apotek%'"
+            "where" => $where
         ];
 
         $get_data = Modules::run('database/get', $array_data)->result();
